@@ -1,0 +1,27 @@
+# Local, private, transient, and live project data
+_site/
+.bundle/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+*.pdf
+*.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
+*-journal
+*.log
+rfid_users.json
+access_logs.db*
+sources/
+private-archive/
+local-planning-not-for-public/
+.DS_Store
+Thumbs.db
