@@ -1,4 +1,4 @@
-# David Serrano | Systems Analysis Portfolio
+# David N. Serrano | Systems Analysis Portfolio
 
 This portfolio begins with an analyst-led case study based on an honors thesis prototype using an Arduino Nano 33 IoT and Raspberry Pi Zero 2 W. The thesis describes RFID and keypad verification, serial communication, SQLite event logging, and a Tkinter administration dashboard.
 
@@ -29,3 +29,4 @@ This public package contains no thesis PDF, raw thesis screenshots, source-code 
 ## Limitations
 
 Thesis statements about successful tests describe the author's demo and are not independent test results. The supplied Python files represent alternative implementations; they should not be described as one integrated runtime without further evidence. The product direction is an aspiration, not an existing deployment.
+
