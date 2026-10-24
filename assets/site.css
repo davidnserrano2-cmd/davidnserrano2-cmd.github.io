@@ -2,3 +2,8 @@
 
 .thesis-summary{max-width:1120px}.thesis-diagram{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:#f7f9fc;margin:28px 0 12px;box-shadow:var(--shadow)}.thesis-summary .diagram-caption{margin:0 0 18px}.thesis-summary>.text-link{display:inline-block;margin-top:10px}
 
+
+/* Keep diagram text readable when syntax highlighting wraps it in code spans. */
+.document-content pre code,.document-content pre code *{background:transparent;color:inherit;padding:0;border-radius:0;font-size:inherit}
+
+
