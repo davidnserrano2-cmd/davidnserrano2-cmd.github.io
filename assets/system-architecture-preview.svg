@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" role="img" aria-labelledby="title desc">
+  <title id="title">Simplified thesis system architecture preview</title>
+  <desc id="desc">RFID, keypad, and tamper inputs feed the Arduino. The Arduino and Raspberry Pi exchange access requests and decisions over serial. The Pi handles authentication and event logging and hosts the administrator dashboard. The Arduino drives the LCD, LED, and buzzer based on returned outcomes.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#087e78"/></marker>
+    <marker id="back" markerWidth="10" markerHeight="10" refX="2" refY="5" orient="auto"><path d="M10 0L0 5L10 10Z" fill="#087e78"/></marker>
+    <style>.bg{fill:#f7f8f5}.card{fill:#fff;stroke:#cbd9d4;stroke-width:2}.core{fill:#e7f2ef;stroke:#64a99d;stroke-width:2}.eyebrow{font:800 13px system-ui,sans-serif;letter-spacing:1.2px;fill:#087e78}.head{font:700 22px system-ui,sans-serif;fill:#192e3c}.body{font:500 16px system-ui,sans-serif;fill:#4d626b}.small{font:600 13px system-ui,sans-serif;fill:#60727c}.flow{stroke:#087e78;stroke-width:3;fill:none;marker-end:url(#arrow)}.two{stroke:#087e78;stroke-width:3;fill:none;marker-start:url(#back);marker-end:url(#arrow)}</style>
+  </defs>
+  <rect class="bg" width="1120" height="430" rx="22"/>
+  <text x="36" y="48" class="eyebrow">THESIS PROJECT · SIMPLIFIED ARCHITECTURE</text>
+  <text x="36" y="81" class="head">Inputs → local access decision → visible outcome</text>
+  <rect class="card" x="36" y="128" width="222" height="184" rx="16"/>
+  <text x="58" y="164" class="eyebrow">INPUTS</text><text x="58" y="205" class="head">RFID + keypad</text><text x="58" y="236" class="body">RC522 reader</text><text x="58" y="263" class="body">ZRX543 keypad</text><text x="58" y="290" class="body">Tamper switch</text>
+  <path class="flow" d="M258 220H307"/>
+  <rect class="core" x="318" y="128" width="270" height="184" rx="16"/>
+  <text x="342" y="164" class="eyebrow">DEVICE</text><text x="342" y="205" class="head">Arduino Nano 33 IoT</text><text x="342" y="239" class="body">Reads input · monitors tamper</text><text x="342" y="272" class="body">Drives LCD · LED · buzzer</text>
+  <path class="two" d="M588 220H670"/>
+  <text x="629" y="194" text-anchor="middle" class="small">serial · USB</text>
+  <rect class="core" x="681" y="128" width="403" height="184" rx="16"/>
+  <text x="705" y="164" class="eyebrow">LOCAL CONTROL</text><text x="705" y="205" class="head">Raspberry Pi Zero 2 W</text><text x="705" y="239" class="body">Python authentication · SQLite event log</text><text x="705" y="272" class="body">Outcome returns to Arduino</text>
+  <path class="flow" d="M883 312V343"/>
+  <rect class="card" x="681" y="350" width="403" height="56" rx="14"/>
+  <text x="705" y="385" class="eyebrow">ADMIN DASHBOARD · STATUS · LOGS · USER CONTROLS</text>
+  <text x="38" y="373" class="small">The dashboard observes and administers the Pi application; physical feedback remains on the Arduino.</text>
+</svg>
+

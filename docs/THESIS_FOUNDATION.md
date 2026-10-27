@@ -12,9 +12,7 @@ description: Thesis-backed architecture, user workflow, and the boundary between
 
 The prototype combines an RFID credential and keypad PIN with an Arduino Nano 33 IoT, a Raspberry Pi Zero 2 W, a local SQLite database, and a custom Tkinter administration dashboard. The Arduino handles the attached input and feedback hardware. The Pi is described as the controller for authentication, event logging, serial reconnection, and the admin interface.
 
-The paper's architecture figure names an RC522 RFID reader, ZRX543 keypad, endstop tamper switch, 9600-baud serial communication, SQLite, and an LCD 1602, RGB LED, and buzzer for user feedback. The recreated diagram below conveys the paper's design without reproducing its screenshots or any example identifiers.
-
-![Recreated system architecture from the thesis description. The Arduino handles RFID, keypad, tamper, and physical feedback; bidirectional serial connects it to the Raspberry Pi, where authentication, SQLite logging, and the dashboard run.]({{ '/assets/system-architecture.svg' | relative_url }})
+The paper's architecture figure names an RC522 RFID reader, ZRX543 keypad, endstop tamper switch, 9600-baud serial communication, SQLite, and an LCD 1602, RGB LED, and buzzer for user feedback. Recreated diagrams based on the paper appear in the [System Design & Technical Architecture section](#system-design).
 
 ## Access-request workflow
 
@@ -25,23 +23,25 @@ The paper's architecture figure names an RC522 RFID reader, ZRX543 keypad, endst
 
 The thesis reports work on inconsistent reads, serial interruption and reconnection, and component-by-component hardware debugging. It also includes prototype photos, dashboard/status screenshots, a database diagram, and a demonstration sequence. The claims in the paper are project-reported results, not an independent production or security assessment.
 
-<a id="system-design"></a>
-
-## System Design & Technical Architecture
-
-The architecture separates three responsibilities: the Arduino reads inputs and drives local feedback; the Raspberry Pi evaluates requests and records events; and the desktop dashboard gives an administrator visibility into the Pi application. Serial communication carries requests and outcomes between the Arduino and Pi. The dashboard is connected to the Pi backend and is not in the physical feedback path.
-
-![System architecture showing Arduino device input and feedback, bidirectional serial communication with the Raspberry Pi backend, and the dashboard connected to the Pi.]({{ '/assets/system-architecture.svg' | relative_url }})
-
-[Open the full-size system architecture diagram]({{ '/assets/system-architecture.svg' | relative_url }})
-
 ## The paper and the supplied code are related evidence, not a perfect match
 
 The paper presents one intended system architecture. The Pi folder contains multiple code variants and storage paths. In the files reviewed for this case study, the dashboard and network/server paths appear to open serial themselves, with local JSON, SQLite, and PostgreSQL represented in different alternatives. Those variants should not be depicted as components that all ran together.
 
 This documentation-to-implementation gap is a useful systems-analysis finding: verify which build was used for a given demonstration, identify the authoritative user and event stores, and assign one owner to the serial connection before designing a consolidated next version. File names such as `final` and `v2` do not establish chronology by themselves.
 
-## Proposed data concepts in the thesis diagram
+<a id="system-design"></a>
+
+## System Design & Technical Architecture
+
+The architecture separates three responsibilities: the Arduino reads inputs and drives local feedback; the Raspberry Pi evaluates requests and records events; and the desktop dashboard gives an administrator visibility into the Pi application. Serial communication carries requests and outcomes between the Arduino and Pi. The dashboard is connected to the Pi backend and is not in the physical feedback path.
+
+### System architecture
+
+<div class="diagram-scroll"><img src="{{ '/assets/system-architecture.svg' | relative_url }}" alt="System architecture showing Arduino device input and feedback, bidirectional serial communication with the Raspberry Pi backend, and the dashboard connected to the Pi." loading="lazy"></div>
+
+[Open the full-size system architecture diagram]({{ '/assets/system-architecture.svg' | relative_url }})
+
+### Proposed data concepts
 
 The paper's ERD separates four concepts:
 
@@ -54,19 +54,19 @@ The paper's ERD separates four concepts:
 
 This is a summary of the thesis data model, not a claim that every table was implemented in the demonstrated application. Public examples should use synthetic identities and must never contain card UIDs, PINs, passwords, raw authentication messages, or live event history.
 
-### Database design diagram
+### Database design · Proposed Access-Control Data Model
 
 The data model separates users, devices, authentication attempts, and security events. This structure is intended to support access auditing, incident investigation, and administrative reporting. Nullable relationships can preserve events when a user or device cannot be positively identified. The diagram below is labeled **Proposed Access-Control Data Model** because the thesis ERD is design evidence and does not establish that this entire schema ran in the demonstrated application.
 
-![Proposed data model with Users, Devices, Access_Logs, and Security_Events. Users and Devices each have one-to-many relationships with Access_Logs; Devices has a one-to-many relationship with Security_Events. The foreign keys shown as nullable remain optional.]({{ '/assets/access-control-erd.svg' | relative_url }})
+<div class="diagram-scroll"><img src="{{ '/assets/access-control-erd.svg' | relative_url }}" alt="Proposed data model with Users, Devices, Access_Logs, and Security_Events. Users and Devices each have one-to-many relationships with Access_Logs; Devices has a one-to-many relationship with Security_Events. The foreign keys shown as nullable remain optional." loading="lazy"></div>
 
 [Open the full-size proposed data model]({{ '/assets/access-control-erd.svg' | relative_url }})
 
-## Hardware Integration
+### Hardware integration
 
 The source wiring diagram groups the RFID reader, keypad, tamper switch, display, and feedback devices around the Arduino Nano 33 IoT, with USB serial between the Arduino and Raspberry Pi. The drawing names the RC522 SPI pins, LCD I²C pins, and keypad pin set. It leaves some digital output pins and the keypad row/column order unspecified; the redrawn diagram keeps those assignments unspecified rather than filling them in.
 
-![Hardware integration reference showing USB serial between Raspberry Pi and Arduino, the RC522 SPI assignments, LCD I2C labels, and the keypad, tamper, LED, and buzzer signal groups.]({{ '/assets/hardware-integration.svg' | relative_url }})
+<div class="diagram-scroll"><img src="{{ '/assets/hardware-integration.svg' | relative_url }}" alt="Hardware integration reference showing USB serial between Raspberry Pi and Arduino, the RC522 SPI assignments, LCD I2C labels, and the keypad, tamper, LED, and buzzer signal groups." loading="lazy"></div>
 
 [Open the full-size hardware integration diagram]({{ '/assets/hardware-integration.svg' | relative_url }})
 

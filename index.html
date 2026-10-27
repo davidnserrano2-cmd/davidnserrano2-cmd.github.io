@@ -27,7 +27,7 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
       <article class="profile-card"><p class="eyebrow">EDUCATION</p><h3>Information systems to IT</h3><p><strong>B.S., Computer Information Systems</strong><br>Arizona State University · W. P. Carey School of Business · May 2026</p><p><strong>M.S., Information Technology</strong><br>Arizona State University · Ira A. Fulton Schools of Engineering · in progress, expected May 2028</p><p class="profile-note">Barrett, The Honors College · cum laude distinction</p></article>
       <article class="profile-card"><p class="eyebrow">OPERATIONS &amp; SERVICE</p><h3>Clear communication in a live environment</h3><p>Swim instructor at Hubbard Family Swim School since May 2022. Work includes teaching safety, communicating with families, supporting check-in and scheduling, and helping coordinate daily facility operations.</p><p class="profile-note">Outside my formal role, I have contributed limited infrastructure support: installing a security camera and wireless access point, and organizing server-stack cabling.</p></article>
       <article class="profile-card profile-span"><p class="eyebrow">TECHNICAL PRACTICE</p><h3>Build, integrate, troubleshoot, document</h3><p>Designed and demonstrated a functioning RFID-and-keypad honors-thesis prototype; built four custom 3D printers; and assembled and troubleshot PCs and workstations. I have also co-authored research on privacy regulation and technology-firm governance, risk, and compliance, published at AMCIS 2026 TREOs (Paper 103).</p>
-        <div class="skill-tags" aria-label="Skills from résumé"><span>Python</span><span>SQL</span><span>Relational data modeling</span><span>Arduino</span><span>Raspberry Pi</span><span>System integration</span><span>Hardware/software troubleshooting</span><span>PostgreSQL</span><span>SQL Server</span><span>Excel</span><span>CAD</span></div>
+        <div class="skill-tags" aria-label="Skills from résumé"><span>Python</span><span>SQL</span><span>Relational database concepts</span><span>Arduino</span><span>Raspberry Pi</span><span>System integration</span><span>Hardware/software troubleshooting</span><span>PostgreSQL</span><span>SQL Server</span><span>Excel</span><span>CAD</span></div>
         <p class="profile-note">Security+ SY0-701 preparation is in progress; I have not represented it as a certification.</p>
       </article>
     </div>
@@ -58,11 +58,19 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
     <div class="wrap thesis-summary">
     <div class="section-heading"><div><p class="eyebrow">THESIS DESIGN / SYSTEM PREVIEW</p><h2>Hardware at the edge. Local control on the Pi.</h2></div><p class="section-intro">The thesis places the Arduino between reader/keypad inputs and the Pi backend. The Pi evaluates access, logs events, and supports an administrator dashboard; outcomes return to the Arduino for physical feedback.</p></div>
     <a class="diagram-preview-link" href="{{ '/docs/THESIS_FOUNDATION.html#system-design' | relative_url }}" aria-label="Explore the complete thesis system architecture and technical diagrams">
-      <img class="thesis-diagram" src="{{ '/assets/system-architecture.svg' | relative_url }}" alt="System architecture preview: Arduino handles device inputs and feedback, bidirectional serial connects the Arduino to a Raspberry Pi backend, and the Python dashboard monitors the Pi." />
+      <img class="thesis-diagram" src="{{ '/assets/system-architecture-preview.svg' | relative_url }}" alt="Simplified thesis architecture: RFID, keypad, and tamper inputs connect to an Arduino; Arduino and Raspberry Pi communicate bidirectionally; the Pi hosts the dashboard and returns outcomes for device feedback." />
     </a>
     <p class="diagram-caption">A thesis-based redraw that distinguishes the device feedback path from the dashboard monitoring path.</p>
     <a class="button button-primary" href="{{ '/docs/THESIS_FOUNDATION.html#system-design' | relative_url }}">Explore System Architecture <span>↗</span></a>
   </div>
+</section>
+<section id="live-demo" class="section wrap demo-section">
+  <div class="section-heading"><div><p class="eyebrow">LIVE PROTOTYPE WALKTHROUGH · RECORDING PLANNED</p><h2>See the dashboard and hardware together.</h2></div><p class="section-intro">The planned demo is one synchronized split-screen recording: the admin application on the left and a camera view of the physical card scan, keypad entry, and device feedback on the right. No recording has been added yet.</p></div>
+  <div class="demo-split" role="group" aria-label="Placeholders for the two views in a future split-screen prototype recording">
+    <div class="demo-pane"><div class="demo-pane-heading"><span>01</span><strong>ADMIN APPLICATION</strong></div><div class="demo-placeholder"><span class="demo-play" aria-hidden="true">▶</span><strong>Dashboard recording goes here</strong><span>Status and event result as the app reports them</span></div><p>Capture the dashboard responding to the scan. Include only status and fields the app genuinely displays.</p></div>
+    <div class="demo-pane"><div class="demo-pane-heading"><span>02</span><strong>PHYSICAL DEVICE</strong></div><div class="demo-placeholder"><span class="demo-play" aria-hidden="true">▶</span><strong>Hardware camera view goes here</strong><span>Demo card · keypad · LCD / LED / buzzer</span></div><p>Show the card scan, demo-only PIN entry, and the device’s actual feedback.</p></div>
+  </div>
+  <p class="demo-safety"><span class="status-dot"></span>Before recording, use synthetic demo credentials and keep card UIDs, real PINs, personal data, and live logs out of frame.</p>
 </section>
 <section class="section section-tint">
   <div class="wrap recommendation">
