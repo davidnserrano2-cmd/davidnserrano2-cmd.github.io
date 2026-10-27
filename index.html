@@ -5,10 +5,10 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
 ---
 <section class="hero wrap">
   <div class="hero-copy">
-    <p class="eyebrow"><span class="pulse"></span> CIS · SYSTEMS ANALYSIS · PORTFOLIO</p>
-    <h1>Systems analysis of an RFID access-control thesis prototype</h1>
-    <p class="hero-lede">An honors-thesis prototype brought together RFID, keypad input, Arduino hardware, a Raspberry Pi, local event logging, and an administrator dashboard. This case study maps what the thesis designed, what the supplied code variants show, and what a responsible next version would require.</p>
-    <div class="hero-actions"><a class="button button-primary" href="#case-study">Explore the case study <span>↘</span></a><a class="button button-secondary" href="#evidence">View analysis artifacts</a></div>
+    <p class="eyebrow"><span class="pulse"></span> CIS GRADUATE · SYSTEMS ANALYSIS · TECHNICAL IMPLEMENTATION</p>
+    <h1>Computer Information Systems graduate focused on systems analysis.</h1>
+    <p class="hero-lede">I designed and demonstrated a working RFID-and-keypad access-control prototype as my honors thesis. This portfolio shows how the thesis describes the hardware, Raspberry Pi application, event logging, and administrator dashboard, then compares that design with the supplied code and documents next steps.</p>
+    <div class="hero-actions"><a class="button button-primary" href="#case-study">View the RFID project <span>↘</span></a><a class="button button-secondary" href="#evidence">Review the project evidence</a></div>
     <div class="hero-meta"><span><strong>Focus</strong> Computer systems analysis</span><span><strong>Background</strong> B.S. in CIS</span><span><strong>Project</strong> Honors thesis prototype</span></div>
   </div>
   <aside class="hero-note">
@@ -21,7 +21,7 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
 </section>
 <section class="ticker" aria-label="Project capabilities"><div class="ticker-inner"><span>Requirements analysis</span><i></i><span>Process mapping</span><i></i><span>Data modeling</span><i></i><span>Integration review</span><i></i><span>Risk and options</span></div></section>
 <section id="case-study" class="section wrap">
-  <div class="section-heading"><div><p class="eyebrow">01 / THE CASE STUDY</p><h2>From working demo to maintainable system</h2></div><p class="section-intro">The thesis describes an Arduino Nano 33 IoT handling RFID, PIN, tamper, and local feedback, with a Raspberry Pi Zero 2 W handling access decisions, SQLite logging, serial recovery, and a Tkinter dashboard. The supplied Pi folder contains alternative code paths, so the paper's design and the code snapshot are assessed separately.</p></div>
+  <div class="section-heading"><div><p class="eyebrow">01 / HONORS THESIS PROJECT</p><h2>RFID-Based Multi-Factor Access Control System</h2></div><p class="section-intro">Designed and demonstrated as an honors-thesis project, the prototype combines RFID and keypad input with Arduino hardware, a Raspberry Pi decision and logging layer, and an administrator dashboard. The thesis describes the target architecture; the supplied Pi folder contains several software alternatives, so this case study separates what I demonstrated from what the files show.</p></div>
   <div class="finding-grid">
     <article class="finding-card"><span class="card-index">01</span><h3>Design vs. implementation</h3><p>The thesis presents one system architecture; the Pi snapshot contains multiple alternatives that do not map cleanly to that single flow.</p><span class="card-tag">Traceability gap</span></article>
     <article class="finding-card"><span class="card-index">02</span><h3>Split data ownership</h3><p>User records and event history are represented across JSON, SQLite, and a separate PostgreSQL design.</p><span class="card-tag">Data architecture</span></article>
