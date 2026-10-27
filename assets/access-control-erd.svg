@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Proposed access-control data model</title>
+  <desc id="desc">Four entities: Users, Devices, Access Logs, and Security Events. Users and Devices each have one-to-many relationships with Access Logs; Devices has a one-to-many relationship with Security Events. The device and user foreign keys on logs, and device foreign key on security events, are nullable in the source diagram.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f5}.entity{fill:#fff;stroke:#cbd9d4;stroke-width:2}.bar{fill:#e7f2ef}.title{font:700 23px system-ui,sans-serif;fill:#192e3c}.caption{font:500 14px system-ui,sans-serif;fill:#60727c}.name{font:750 17px system-ui,sans-serif;fill:#192e3c}.field{font:500 14px system-ui,sans-serif;fill:#405761}.key{font:800 12px system-ui,sans-serif;letter-spacing:1px;fill:#087e78}.connector{stroke:#087e78;stroke-width:2.5;fill:none}.badge{fill:#192e3c}.badgetxt{font:700 12px system-ui,sans-serif;fill:#fff}.note{fill:#fff7e9;stroke:#e7c98f;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="820" rx="24"/>
+  <text x="40" y="48" class="key">THESIS DATA MODEL · INTERPRETATION</text>
+  <text x="40" y="84" class="title">Proposed Access-Control Data Model</text>
+  <text x="40" y="110" class="caption">The thesis ERD is presented as a design model; this diagram does not claim every entity was implemented in the demo.</text>
+
+  <!-- Relationships are behind the entity cards. -->
+  <path class="connector" d="M275 390V435"/>
+  <path class="connector" d="M690 270H630V420H570V435"/>
+  <path class="connector" d="M925 390V435"/>
+  <text x="288" y="408" class="caption">1 → many</text>
+  <text x="502" y="413" class="caption">1 → many</text>
+  <text x="940" y="414" class="caption">1 → many</text>
+
+  <g transform="translate(40 145)">
+    <rect class="entity" width="470" height="245" rx="12"/><path class="bar" d="M12 0H458a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0Z"/>
+    <text x="22" y="33" class="name">Users</text>
+    <text x="22" y="78" class="key">PK</text><text x="84" y="78" class="field">user_id</text>
+    <text x="22" y="108" class="field">display_name</text><text x="22" y="136" class="field">role · active</text>
+    <text x="22" y="164" class="field">rfid_hash · pin_hash · salt</text><text x="22" y="192" class="field">created_at</text>
+    <text x="22" y="224" class="caption">Credential values are represented as protected references.</text>
+  </g>
+  <g transform="translate(690 145)">
+    <rect class="entity" width="470" height="245" rx="12"/><path class="bar" d="M12 0H458a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0Z"/>
+    <text x="22" y="33" class="name">Devices</text>
+    <text x="22" y="78" class="key">PK</text><text x="84" y="78" class="field">device_id</text>
+    <text x="22" y="112" class="field">device_name</text><text x="22" y="144" class="field">location</text>
+    <text x="22" y="176" class="field">created_at</text>
+    <text x="22" y="220" class="caption">Device identity and descriptive metadata.</text>
+  </g>
+  <g transform="translate(40 435)">
+    <rect class="entity" width="560" height="320" rx="12"/><path class="bar" d="M12 0H548a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0Z"/>
+    <text x="22" y="33" class="name">Access_Logs</text>
+    <text x="22" y="82" class="key">PK</text><text x="84" y="82" class="field">log_id</text>
+    <text x="22" y="114" class="field">ts</text>
+    <text x="22" y="146" class="key">FK</text><text x="84" y="146" class="field">device_id · nullable</text>
+    <text x="22" y="178" class="key">FK</text><text x="84" y="178" class="field">user_id · nullable</text>
+    <text x="22" y="210" class="field">auth_method · RFID / PIN / RFID + PIN</text>
+    <text x="22" y="242" class="field">result · SUCCESS / FAIL</text>
+    <text x="22" y="274" class="field">fail_reason</text>
+    <rect class="badge" x="367" y="275" width="171" height="28" rx="14"/><text x="452" y="294" text-anchor="middle" class="badgetxt">many log records</text>
+  </g>
+  <g transform="translate(690 435)">
+    <rect class="entity" width="470" height="320" rx="12"/><path class="bar" d="M12 0H458a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0Z"/>
+    <text x="22" y="33" class="name">Security_Events</text>
+    <text x="22" y="82" class="key">PK</text><text x="84" y="82" class="field">event_id</text>
+    <text x="22" y="114" class="field">ts</text>
+    <text x="22" y="146" class="key">FK</text><text x="84" y="146" class="field">device_id · nullable</text>
+    <text x="22" y="178" class="field">event_type · TAMPER / LOCKOUT / SYSTEM_BOOT</text>
+    <text x="22" y="210" class="field">severity · LOW / MEDIUM / HIGH</text>
+    <text x="22" y="242" class="field">notes</text>
+    <rect class="badge" x="277" y="275" width="171" height="28" rx="14"/><text x="362" y="294" text-anchor="middle" class="badgetxt">many event records</text>
+  </g>
+  <rect class="note" x="40" y="775" width="1120" height="1" rx="1"/>
+  <text x="40" y="800" class="caption">One user/device may relate to many records. Nullable foreign keys preserve unidentified or device-unavailable events as shown in the thesis figure.</text>
+</svg>
+

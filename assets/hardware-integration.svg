@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 940" role="img" aria-labelledby="title desc">
+  <title id="title">Thesis prototype hardware integration and supplied pin labels</title>
+  <desc id="desc">A Raspberry Pi Zero 2 W connects to an Arduino Nano 33 IoT through USB serial. The supplied wiring diagram labels RC522 SPI pins, LCD I2C pins, keypad and tamper digital connections, and feedback outputs. Pin assignments are transcribed from the provided diagram and require comparison with firmware and the actual build. The Arduino uses 3.3 volt logic; verify the LCD and USB power arrangement before connecting.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f5}.card{fill:#fff;stroke:#cbd9d4;stroke-width:2}.core{fill:#e7f2ef;stroke:#64a99d;stroke-width:2}.warn{fill:#fff7e9;stroke:#e7c98f;stroke-width:2}.title{font:700 23px system-ui,sans-serif;fill:#192e3c}.sub{font:500 14px system-ui,sans-serif;fill:#60727c}.eyebrow{font:800 12px system-ui,sans-serif;letter-spacing:1.1px;fill:#087e78}.head{font:700 17px system-ui,sans-serif;fill:#192e3c}.line{font:500 13px system-ui,sans-serif;fill:#405761}.small{font:500 12px system-ui,sans-serif;fill:#60727c}.link{stroke:#087e78;stroke-width:2.3;fill:none}.power{stroke:#c47b27;stroke-width:2.3;fill:none}.ground{stroke:#536a73;stroke-width:2.3;stroke-dasharray:7 5;fill:none}.serial{stroke:#3479a8;stroke-width:3;fill:none}.tag{fill:#192e3c}.tagtext{font:700 11px system-ui,sans-serif;fill:white}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="940" rx="24"/>
+  <text x="38" y="46" class="eyebrow">HARDWARE INTEGRATION · TRANSCRIBED FROM SUPPLIED WIRING DIAGRAM</text>
+  <text x="38" y="82" class="title">Arduino-centered I/O with a USB serial link to the Pi</text>
+  <text x="38" y="108" class="sub">Labels below reflect the source drawing; firmware, board revision, and physical wiring were not available for pin-by-pin verification.</text>
+
+  <path class="serial" d="M516 173H684"/>
+  <path d="M516 173l12-7v14zM684 173l-12-7v14z" fill="#3479a8"/>
+  <rect class="card" x="330" y="132" width="205" height="82" rx="14"/>
+  <text x="351" y="164" class="eyebrow">CONTROL &amp; BACKEND</text><text x="351" y="191" class="head">Raspberry Pi Zero 2 W</text>
+  <rect class="card" x="670" y="132" width="235" height="82" rx="14"/>
+  <text x="693" y="164" class="eyebrow">DEVICE CONTROLLER</text><text x="693" y="191" class="head">Arduino Nano 33 IoT</text>
+  <rect class="tag" x="538" y="145" width="122" height="52" rx="13"/><text x="599" y="167" text-anchor="middle" class="tagtext">USB serial</text><text x="599" y="184" text-anchor="middle" class="tagtext">9600 baud¹</text>
+
+  <!-- Visual links group I/O around the controller; labels stay explicit inside each card. -->
+  <path class="link" d="M670 214V250H300V278M670 250H900V278M670 250H300V530M670 250H900V530M670 250H300V765M670 250H900V765"/>
+  <path class="power" d="M655 214V264H420V278M420 264H600V530"/>
+  <path class="ground" d="M690 214V270H780V278M780 270H600V530"/>
+  <path class="link" d="M40 229H78"/><text x="88" y="233" class="small">Signal · SPI / I²C / digital groups labeled on cards</text>
+  <path class="power" d="M442 229H480"/><text x="490" y="233" class="small">Power</text>
+  <path class="ground" d="M590 229H628"/><text x="638" y="233" class="small">Ground</text>
+  <path class="serial" d="M740 229H778"/><text x="788" y="233" class="small">Serial</text>
+
+  <g transform="translate(38 278)"><rect class="card" width="500" height="220" rx="14"/><text x="22" y="36" class="eyebrow">SPI · RFID INPUT</text><text x="22" y="68" class="head">RC522 reader</text>
+    <text x="22" y="104" class="line">SDA / SS → D10</text><text x="22" y="132" class="line">SCK → D13 · MOSI → D11</text><text x="22" y="160" class="line">MISO → D12 · RST → D9</text><text x="22" y="188" class="line">3.3 V → 3.3 V · GND → GND</text><text x="306" y="188" class="small">No 5 V signal</text></g>
+  <g transform="translate(662 278)"><rect class="card" width="500" height="220" rx="14"/><text x="22" y="36" class="eyebrow">I²C · DISPLAY</text><text x="22" y="68" class="head">LCD 1602 module</text>
+    <text x="22" y="104" class="line">SDA → A4 · SCL → A5 (as drawn)</text><text x="22" y="132" class="line">VCC → 5 V · GND → GND (as drawn)</text><text x="22" y="166" class="small">Source note: “VBUS bridge required for 5 V output”</text><text x="22" y="194" class="small">Confirm safe 3.3 V logic / level shifting for the exact module.</text></g>
+
+  <g transform="translate(38 530)"><rect class="card" width="500" height="205" rx="14"/><text x="22" y="36" class="eyebrow">DIGITAL INPUT</text><text x="22" y="68" class="head">ZRX543 keypad</text>
+    <text x="22" y="108" class="line">Rows / columns → D2, D3, D4, D5,</text><text x="22" y="136" class="line">D6, D7, D8, A6, A7</text><text x="22" y="174" class="small">Exact row/column order not specified in source.</text></g>
+  <g transform="translate(662 530)"><rect class="card" width="500" height="205" rx="14"/><text x="22" y="36" class="eyebrow">DIGITAL INPUT &amp; OUTPUTS</text><text x="22" y="68" class="head">Tamper switch · LED · buzzer</text>
+    <text x="22" y="108" class="line">Tamper: signal → digital pin · GND → GND</text><text x="22" y="136" class="line">RGB: R / G / B → digital pins · common → GND</text><text x="22" y="164" class="line">Active buzzer: + → digital pin · − → GND</text><text x="22" y="190" class="small">Individual digital pin numbers are not specified.</text></g>
+
+  <rect class="warn" x="38" y="765" width="1124" height="130" rx="14"/>
+  <text x="62" y="800" class="eyebrow">VERIFY BEFORE RECONNECTING HARDWARE</text>
+  <text x="62" y="831" class="line">The Nano 33 IoT uses 3.3 V logic. Check the exact LCD backpack and any VBUS bridge or level shifting before applying 5 V.</text>
+  <text x="62" y="858" class="line">¹ 9600 baud is specified by the thesis architecture; confirm against the device firmware. The wiring image shows USB serial but no baud rate.</text>
+  <text x="62" y="881" class="small">Pin map is a documentation reference, not a verified as-built wiring certification.</text>
+</svg>
+

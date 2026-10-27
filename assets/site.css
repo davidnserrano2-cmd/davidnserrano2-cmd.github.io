@@ -6,4 +6,7 @@
 /* Keep diagram text readable when syntax highlighting wraps it in code spans. */
 .document-content pre code,.document-content pre code *{background:transparent;color:inherit;padding:0;border-radius:0;font-size:inherit}
 
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.profile-card{padding:25px;background:#fff;border:1px solid var(--line)}.profile-card .eyebrow{margin-bottom:12px}.profile-card h3{font:500 23px/1.2 var(--serif);margin:0 0 16px;color:var(--ink)}.profile-card p:not(.eyebrow){font-size:12px;line-height:1.8;color:var(--muted);margin:0 0 14px}.profile-card p strong{color:var(--ink)}.profile-card .profile-note{font-size:10px!important;border-top:1px solid var(--line);padding-top:12px;margin:14px 0 0!important}.profile-span{grid-column:1/-1}.skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.skill-tags span{display:inline-block;padding:7px 10px;border:1px solid #d8e3df;border-radius:18px;color:#435a63;background:#f7f8f5;font-size:10px;font-weight:650}.diagram-preview-link{display:block}.diagram-preview-link:focus-visible{outline:3px solid var(--teal);outline-offset:4px;border-radius:12px}.thesis-summary .button{margin-top:12px}.thesis-summary .thesis-diagram{margin-top:20px}
+@media(max-width:600px){.profile-grid{grid-template-columns:1fr}.profile-span{grid-column:auto}.profile-card{padding:20px}.skill-tags{gap:6px}}
+
 

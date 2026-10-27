@@ -20,6 +20,19 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
   </aside>
 </section>
 <section class="ticker" aria-label="Project capabilities"><div class="ticker-inner"><span>Requirements analysis</span><i></i><span>Process mapping</span><i></i><span>Data modeling</span><i></i><span>Integration review</span><i></i><span>Risk and options</span></div></section>
+<section id="profile" class="section section-tint profile-section">
+  <div class="wrap">
+    <div class="section-heading"><div><p class="eyebrow">BACKGROUND / EDUCATION / EXPERIENCE</p><h2>Systems thinking grounded in hands-on work.</h2></div><p class="section-intro">My background combines formal information-systems education, a demonstrated embedded-systems thesis, customer-facing operations, and years of building and troubleshooting hardware.</p></div>
+    <div class="profile-grid">
+      <article class="profile-card"><p class="eyebrow">EDUCATION</p><h3>Information systems to IT</h3><p><strong>B.S., Computer Information Systems</strong><br>Arizona State University · W. P. Carey School of Business · May 2026</p><p><strong>M.S., Information Technology</strong><br>Arizona State University · Ira A. Fulton Schools of Engineering · in progress, expected May 2028</p><p class="profile-note">Barrett, The Honors College · cum laude distinction</p></article>
+      <article class="profile-card"><p class="eyebrow">OPERATIONS &amp; SERVICE</p><h3>Clear communication in a live environment</h3><p>Swim instructor at Hubbard Family Swim School since May 2022. Work includes teaching safety, communicating with families, supporting check-in and scheduling, and helping coordinate daily facility operations.</p><p class="profile-note">Outside my formal role, I have contributed limited infrastructure support: installing a security camera and wireless access point, and organizing server-stack cabling.</p></article>
+      <article class="profile-card profile-span"><p class="eyebrow">TECHNICAL PRACTICE</p><h3>Build, integrate, troubleshoot, document</h3><p>Designed and demonstrated a functioning RFID-and-keypad honors-thesis prototype; built four custom 3D printers; and assembled and troubleshot PCs and workstations. I have also co-authored research on privacy regulation and technology-firm governance, risk, and compliance, published at AMCIS 2026 TREOs (Paper 103).</p>
+        <div class="skill-tags" aria-label="Skills from résumé"><span>Python</span><span>SQL</span><span>Relational data modeling</span><span>Arduino</span><span>Raspberry Pi</span><span>System integration</span><span>Hardware/software troubleshooting</span><span>PostgreSQL</span><span>SQL Server</span><span>Excel</span><span>CAD</span></div>
+        <p class="profile-note">Security+ SY0-701 preparation is in progress; I have not represented it as a certification.</p>
+      </article>
+    </div>
+  </div>
+</section>
 <section id="case-study" class="section wrap">
   <div class="section-heading"><div><p class="eyebrow">01 / HONORS THESIS PROJECT</p><h2>RFID-Based Multi-Factor Access Control System</h2></div><p class="section-intro">Designed and demonstrated as an honors-thesis project, the prototype combines RFID and keypad input with Arduino hardware, a Raspberry Pi decision and logging layer, and an administrator dashboard. The thesis describes the target architecture; the supplied Pi folder contains several software alternatives, so this case study separates what I demonstrated from what the files show.</p></div>
   <div class="finding-grid">
@@ -42,11 +55,13 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
   </div>
 </section>
 <section class="section section-tint">
-  <div class="wrap thesis-summary">
-    <div class="section-heading"><div><p class="eyebrow">THESIS DESIGN / RECREATED DIAGRAM</p><h2>Hardware at the edge. Local control on the Pi.</h2></div><p class="section-intro">The thesis diagram places the Arduino between the reader/keypad and the Pi backend. The Pi is described as the decision and logging layer, with an administrator dashboard and on-device feedback.</p></div>
-    <img class="thesis-diagram" src="{{ '/assets/thesis-architecture.svg' | relative_url }}" alt="Recreated thesis architecture: reader, keypad and tamper switch connect to Arduino; serial connects Arduino and Raspberry Pi; the Pi handles authentication, SQLite logging, serial recovery and dashboard; feedback uses LCD, LED and buzzer." />
-    <p class="diagram-caption">Redrawn from the thesis architecture figure. It represents documented design intent and reported demo behavior, not a security certification or production deployment.</p>
-    <a class="text-link" href="{{ '/docs/THESIS_FOUNDATION.html' | relative_url }}">Read the thesis-based system walkthrough <span>→</span></a>
+    <div class="wrap thesis-summary">
+    <div class="section-heading"><div><p class="eyebrow">THESIS DESIGN / SYSTEM PREVIEW</p><h2>Hardware at the edge. Local control on the Pi.</h2></div><p class="section-intro">The thesis places the Arduino between reader/keypad inputs and the Pi backend. The Pi evaluates access, logs events, and supports an administrator dashboard; outcomes return to the Arduino for physical feedback.</p></div>
+    <a class="diagram-preview-link" href="{{ '/docs/THESIS_FOUNDATION.html#system-design' | relative_url }}" aria-label="Explore the complete thesis system architecture and technical diagrams">
+      <img class="thesis-diagram" src="{{ '/assets/system-architecture.svg' | relative_url }}" alt="System architecture preview: Arduino handles device inputs and feedback, bidirectional serial connects the Arduino to a Raspberry Pi backend, and the Python dashboard monitors the Pi." />
+    </a>
+    <p class="diagram-caption">A thesis-based redraw that distinguishes the device feedback path from the dashboard monitoring path.</p>
+    <a class="button button-primary" href="{{ '/docs/THESIS_FOUNDATION.html#system-design' | relative_url }}">Explore System Architecture <span>↗</span></a>
   </div>
 </section>
 <section class="section section-tint">

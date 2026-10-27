@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Thesis prototype system architecture</title>
+  <desc id="desc">RFID, keypad, and tamper inputs connect to an Arduino Nano 33 IoT. A two-way serial link connects the Arduino and Raspberry Pi Zero 2 W, which evaluates access requests, logs events to SQLite, and hosts the Python dashboard. The dashboard monitors and administers the Pi; the Pi returns access outcomes to the Arduino for LCD, LED, and buzzer feedback.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#087e78"/></marker>
+    <marker id="arrow-start" markerWidth="10" markerHeight="10" refX="2" refY="5" orient="auto"><path d="M10 0L0 5L10 10Z" fill="#087e78"/></marker>
+    <style>
+      .bg{fill:#f7f8f5}.card{fill:#fff;stroke:#d3dfdb;stroke-width:2}.core{fill:#e7f2ef;stroke:#64a99d;stroke-width:2}.title{font:700 24px system-ui,sans-serif;fill:#192e3c}.sub{font:500 15px system-ui,sans-serif;fill:#60727c}.eyebrow{font:800 13px system-ui,sans-serif;letter-spacing:1.3px;fill:#087e78}.head{font:700 20px system-ui,sans-serif;fill:#192e3c}.line{font:500 15px system-ui,sans-serif;fill:#435a63}.small{font:500 13px system-ui,sans-serif;fill:#60727c}.flow{stroke:#087e78;stroke-width:3;fill:none;marker-end:url(#arrow)}.two{stroke:#087e78;stroke-width:3;fill:none;marker-start:url(#arrow-start);marker-end:url(#arrow)}.labelbg{fill:#f7f8f5;stroke:#dfe6e3;stroke-width:1}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700" rx="24"/>
+  <text x="42" y="48" class="eyebrow">THESIS DESIGN · REDRAWN FROM THE PAPER</text>
+  <text x="42" y="83" class="title">Device interaction, local decision-making, and administration</text>
+  <text x="42" y="110" class="sub">Conceptual view of the demonstrated prototype; the dashboard is a monitoring client, not a hardware-feedback intermediary.</text>
+
+  <rect class="card" x="38" y="190" width="250" height="220" rx="18"/>
+  <text x="62" y="225" class="eyebrow">USER INPUT</text>
+  <text x="62" y="263" class="head">Credential &amp; status</text>
+  <text x="62" y="300" class="line">RC522 RFID reader</text>
+  <text x="62" y="330" class="line">ZRX543 keypad</text>
+  <text x="62" y="360" class="line">Tamper detection switch</text>
+  <text x="62" y="390" class="small">Connected at the Arduino layer</text>
+
+  <path class="flow" d="M288 300H350"/>
+  <rect class="core" x="360" y="175" width="330" height="270" rx="18"/>
+  <text x="386" y="212" class="eyebrow">DEVICE PROCESSING</text>
+  <text x="386" y="251" class="head">Arduino Nano 33 IoT</text>
+  <text x="386" y="292" class="line">Reads RFID and keypad input</text>
+  <text x="386" y="322" class="line">Monitors tamper switch</text>
+  <text x="386" y="352" class="line">Exchanges messages at 9600 baud</text>
+  <text x="386" y="393" class="small">On-device feedback: LCD · RGB LED · buzzer</text>
+
+  <path class="two" d="M690 300H760"/>
+  <rect class="labelbg" x="681" y="249" width="94" height="30" rx="15"/>
+  <text x="728" y="269" text-anchor="middle" class="small">serial · USB</text>
+
+  <rect class="core" x="780" y="165" width="380" height="300" rx="18"/>
+  <text x="808" y="203" class="eyebrow">LOCAL CONTROL &amp; BACKEND</text>
+  <text x="808" y="243" class="head">Raspberry Pi Zero 2 W</text>
+  <text x="808" y="284" class="line">Python access-control application</text>
+  <text x="808" y="314" class="line">Authentication decision logic</text>
+  <text x="808" y="344" class="line">SQLite event logging</text>
+  <text x="808" y="374" class="line">Serial listener and reconnection</text>
+  <text x="808" y="420" class="small">Returns allow / deny outcome to Arduino</text>
+
+  <path class="flow" d="M970 465V520"/>
+  <rect class="labelbg" x="985" y="478" width="126" height="28" rx="14"/>
+  <text x="1048" y="497" text-anchor="middle" class="small">status · logs · admin</text>
+  <rect class="card" x="780" y="530" width="380" height="115" rx="18"/>
+  <text x="808" y="566" class="eyebrow">ADMINISTRATION CLIENT</text>
+  <text x="808" y="600" class="head">Python CustomTkinter dashboard</text>
+  <text x="808" y="627" class="small">System status · access logs · user controls</text>
+
+  <path class="flow" d="M525 445V520"/>
+  <rect class="labelbg" x="410" y="468" width="230" height="30" rx="15"/>
+  <text x="525" y="488" text-anchor="middle" class="small">feedback from access result</text>
+  <rect class="card" x="360" y="530" width="330" height="115" rx="18"/>
+  <text x="386" y="566" class="eyebrow">PHYSICAL FEEDBACK</text>
+  <text x="386" y="601" class="head">LCD · RGB LED · buzzer</text>
+  <text x="386" y="628" class="small">Status and authentication outcome at device</text>
+</svg>
+
