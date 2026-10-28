@@ -1,58 +1,32 @@
 ---
 layout: document
-title: Public Release and Cleanup Plan
-description: Safe, reversible plan for preparing the thesis project for public GitHub and Pages.
+title: Public Repository Scope
+description: Public portfolio contents, excluded materials, and evidence boundaries.
 ---
 
-# Public Release and Cleanup Plan
+# Public Repository Scope
 
-## Current release boundary
+This repository is the application-focused portfolio for the RFID access-control honors-thesis project. It presents the thesis-based design, source-file analysis, requirements work, and recorded demonstration.
 
-The public portfolio contains analysis documents, a static case-study page, and a clean architecture redraw based on the thesis. It does not include the original Python applications, database files, user configuration, environment folder, thesis PDFs, thesis screenshots, or raw records. This keeps the current release useful as proof of systems analysis without exposing identifiers or presenting an academic demo as deployment-ready.
+## Included
 
-The legacy source variants remain private for this first application-focused release. A later source release should wait until the thesis demo path is identified, credential/message handling is corrected, configuration is externalized, and the final diff is reviewed for secrets and private data. The portfolio currently makes the design and analysis work reviewable without presenting unverified code as a safe product.
+- Portfolio overview and project case study
+- Recreated system architecture, hardware integration, and data-model diagrams
+- Recorded Raspberry Pi dashboard demonstration
+- Recorded split-screen hardware demonstration of granted and denied outcomes
+- Thesis foundation, current-state assessment, source inventory, requirements catalogue, and next-stage roadmap
 
-## Before adding implementation artifacts
+## Excluded
 
-1. Preserve the original folder as a private, read-only archive. Work only from a separate sanitized copy.
-2. Compare the Python variants and identify the exact thesis demo path. Record differences in serial protocol, ports, authentication, storage, and logging.
-3. Search the working copy for passwords, PINs, usernames, RFID UIDs, hostnames, tokens, database connection strings, and raw message logging. Replace them with synthetic values and environment-based configuration.
-4. Review event output and screenshots. Remove identifiers and avoid printing or retaining authentication factors.
-5. Review `thesis_schema.sql` independently for sample identities or secrets before publishing a schema-only copy.
-6. Replace historical databases with a newly generated synthetic dataset. Do not sanitize by editing the only copy of the original database.
-7. Build a hardware-free walkthrough with synthetic records, explicit limitations, and setup steps; do not expose the legacy unauthenticated TCP service to a shared or public network.
-8. Keep the full thesis PDF and its screenshots in the private archive. Use original summary text and a clean redraw for the public case study; attribute the thesis as the design source.
-9. Keep job-search trackers, application notes, and private planning outside the public portfolio.
-10. Inspect the final repository contents and commit diff for excluded files and secret-like values before making the repository public.
+- Original Python server and dashboard variants
+- User and credential registry
+- Raw card identifiers, credentials, and authentication messages
+- SQLite databases, journals, and event history
+- Full thesis PDF and source screenshots
+- Personal job-search notes and application records
 
-## Public repository structure
+## Evidence boundary
 
-```text
-rfid-access-control-case-study/
-├── README.md
-├── index.html
-├── _config.yml
-├── _layouts/
-├── assets/
-├── docs/
-│   ├── CURRENT_STATE.md
-│   ├── FILE_INVENTORY.md
-│   ├── REQUIREMENTS.md
-│   ├── PUBLIC_RELEASE.md
-│   └── THESIS_FOUNDATION.md
-├── demo/
-│   ├── README.md
-│   └── synthetic-data/       # generated examples only
-├── diagrams/
-└── src/                      # only after sanitization and version selection
-```
+The thesis and recordings document an academic demonstration. The public materials distinguish thesis design, supplied code, and demonstrated behavior. They do not claim a production-ready system, an independently verified security assessment, or stakeholder-approved requirements.
 
-Keep the job-search tracker, personal application notes, private logs, raw database, and original thesis archive outside the public repository. Do not move or delete the original files as part of this cleanup plan.
-
-## Pages publishing checklist
-
-- Review the site in a browser at the eventual repository URL; verify every page and asset path.
-- Confirm the repository is intended to be public before enabling Pages. A Pages website is publicly viewable.
-- Select GitHub Pages publishing from the repository's `main` branch and root (the site uses Jekyll Markdown layouts).
-- Confirm the public repository contains only the reviewed portfolio package and synthetic data.
-- Add the published Pages URL to the resume and applications after checking it from a signed-out browser.
+The architecture and data-model diagrams are clean redraws based on the thesis materials. The recorded demonstrations show the application and physical access outcomes; identifiers and credentials are excluded from the public presentation.
