@@ -24,9 +24,10 @@ The [portfolio landing page](index.html) summarizes the case study and links to 
 
 ## What is intentionally excluded
 
-This public package contains no thesis PDF, raw thesis screenshots, source-code variants, user data, real RFID identifiers, credentials, access logs, database files, virtual environment, or personal job-search tracker. The architecture graphic is a clean redraw based on the paper's system diagram. Any future demo data must be synthetic.
+The public package includes two short prototype recordings: one of the Raspberry Pi-connected dashboard and one showing the physical granted/denied outcomes. It does not include the thesis PDF, raw thesis screenshots, source-code variants, user registry, real card identifiers, credential values, or database files. The architecture graphic is a clean redraw based on the paper's system diagram; the recordings are demo evidence, not proof of production readiness.
 
 ## Limitations
 
 Thesis statements about successful tests describe the author's demo and are not independent test results. The supplied Python files represent alternative implementations; they should not be described as one integrated runtime without further evidence. The product direction is an aspiration, not an existing deployment.
+
 
