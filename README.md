@@ -7,16 +7,16 @@ The portfolio distinguishes the thesis's documented architecture and demo claims
 ## Project status
 
 - **Completed:** academic/demo prototype and thesis documentation.
-- **Current portfolio work:** architecture and file inventory, integration and data ownership analysis, draft requirements, and public-release safeguards.
+- **Current portfolio work:** architecture and file inventory, integration and data ownership analysis, requirements analysis, and public-release safeguards.
 - **Not claimed:** a production security product, a validated commercial offering, a company, or independently verified security controls.
-- **Long-term interest:** investigate whether a safer and more supportable product could be developed after customer discovery and technical validation.
+- **Long-term interest:** explore a safer, supportable product through customer discovery and technical validation.
 
 ## Start here
 
 - [Thesis foundation and system walkthrough](docs/THESIS_FOUNDATION.md)
 - [Current-state assessment](docs/CURRENT_STATE.md)
 - [Source file inventory](docs/FILE_INVENTORY.md)
-- [Draft requirements catalogue](docs/REQUIREMENTS.md)
+- [Requirements catalogue](docs/REQUIREMENTS.md)
 - [Responsible next-stage roadmap](docs/NEXT_STAGE_ROADMAP.md)
 - [Public release and cleanup plan](docs/PUBLIC_RELEASE.md)
 
@@ -28,6 +28,5 @@ The public package includes two short prototype recordings: one of the Raspberry
 
 ## Limitations
 
-Thesis statements about successful tests describe the author's demo and are not independent test results. The supplied Python files represent alternative implementations; they should not be described as one integrated runtime without further evidence. The product direction is an aspiration, not an existing deployment.
-
+Thesis statements about successful tests describe the author's demo and are not independent test results. The supplied Python files represent alternative implementations; they are not one integrated runtime. The product direction is an aspiration, not an existing deployment.
 
