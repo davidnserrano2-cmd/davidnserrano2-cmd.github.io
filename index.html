@@ -13,9 +13,9 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
   </div>
   <aside class="hero-note">
     <div class="note-top"><span class="note-icon">↗</span><span>PROJECT SNAPSHOT</span></div>
-    <div class="note-stat"><strong>3</strong><span>alternative software paths identified in the Pi copy</span></div>
+    <div class="snapshot-heading">RFID ACCESS CONTROL</div>
     <div class="note-divider"></div>
-    <p>The thesis defines a target architecture. The supplied Pi folder shows several competing implementations. The analysis makes that distinction visible.</p>
+    <p>An honors-thesis prototype integrating RFID and keypad input, Arduino hardware, Raspberry Pi access decisions, event logging, and an administrator dashboard.</p>
     <div class="note-foot"><span class="status-dot"></span> Academic demo · not production software</div>
   </aside>
 </section>
@@ -74,22 +74,22 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
 </section>
 <section class="section section-tint">
   <div class="wrap recommendation">
-    <div><p class="eyebrow">02 / FUTURE-STATE DIRECTION</p><h2>Give each responsibility one clear home.</h2><p class="section-intro">The recommendation is to compare a local-first design with a service-and-dashboard design, then select one serial owner and one authoritative user/event store based on administrator needs, failure behavior, and deployment constraints.</p><a class="text-link" href="{{ '/docs/CURRENT_STATE.html' | relative_url }}">Read the current-state assessment <span>→</span></a></div>
+    <div><p class="eyebrow">02 / FUTURE-STATE DIRECTION</p><h2>Give each responsibility one clear home.</h2><p class="section-intro">The code review identifies two deployment patterns: a local-first application and a Pi service with a separate dashboard. A consolidated design needs one serial owner, one authoritative user and event store, and a documented failure policy.</p><a class="text-link" href="{{ '/docs/CURRENT_STATE.html' | relative_url }}">Read the current-state assessment <span>→</span></a></div>
     <div class="principle-list">
       <div><span>01</span><p><strong>One device owner</strong><small>A single Pi-side component manages the serial connection.</small></p></div>
-      <div><span>02</span><p><strong>One source of truth</strong><small>Choose and document the user and event data model.</small></p></div>
-      <div><span>03</span><p><strong>Safe demonstration</strong><small>Use a simulator and synthetic records; keep private logs out.</small></p></div>
-      <div><span>04</span><p><strong>Analyst-led change</strong><small>Trace user needs through requirements, decisions, and acceptance.</small></p></div>
+      <div><span>02</span><p><strong>One source of truth</strong><small>Select and document one user and event data model.</small></p></div>
+      <div><span>03</span><p><strong>Safe demonstration</strong><small>Use synthetic records for public demonstrations; keep private logs out of the repository.</small></p></div>
+      <div><span>04</span><p><strong>Analyst-led change</strong><small>Document how user needs map to requirements, design decisions, and acceptance criteria.</small></p></div>
     </div>
   </div>
 </section>
 <section id="evidence" class="section wrap">
-  <div class="section-heading"><div><p class="eyebrow">03 / PROJECT EVIDENCE</p><h2>Analysis you can review</h2></div><p class="section-intro">The artifacts are drafts based on the supplied files and stated project goals. Assumptions are identified for validation; no stakeholder interviews are implied.</p></div>
+  <div class="section-heading"><div><p class="eyebrow">03 / PROJECT EVIDENCE</p><h2>Analysis you can review</h2></div><p class="section-intro">These portfolio analysis artifacts are based on the thesis and supplied files. They document observed behavior, design distinctions, and requirements for a future implementation; no stakeholder interviews are claimed.</p></div>
   <div class="evidence-grid">
     <a class="evidence-card" href="{{ '/docs/CURRENT_STATE.html' | relative_url }}"><span class="evidence-type">ASSESSMENT</span><h3>Current-state map</h3><p>Application paths, data stores, ownership gaps, and discovery questions.</p><span class="evidence-arrow">↗</span></a>
-    <a class="evidence-card" href="{{ '/docs/REQUIREMENTS.html' | relative_url }}"><span class="evidence-type">REQUIREMENTS</span><h3>Draft catalogue</h3><p>Prioritized functional and nonfunctional requirements with acceptance conditions.</p><span class="evidence-arrow">↗</span></a>
+    <a class="evidence-card" href="{{ '/docs/REQUIREMENTS.html' | relative_url }}"><span class="evidence-type">REQUIREMENTS</span><h3>Requirements catalogue</h3><p>Prioritized functional and nonfunctional requirements with acceptance conditions.</p><span class="evidence-arrow">↗</span></a>
     <a class="evidence-card" href="{{ '/docs/THESIS_FOUNDATION.html' | relative_url }}"><span class="evidence-type">PRIMARY PROJECT SOURCE</span><h3>Thesis foundation</h3><p>Thesis-backed architecture, demo workflow, data concepts, and evidence boundaries.</p><span class="evidence-arrow">↗</span></a>
-    <a class="evidence-card" href="{{ '/docs/FILE_INVENTORY.html' | relative_url }}"><span class="evidence-type">SOURCE REVIEW</span><h3>File inventory</h3><p>What each supplied Pi file appears to do and how the variants relate.</p><span class="evidence-arrow">↗</span></a>
+    <a class="evidence-card" href="{{ '/docs/FILE_INVENTORY.html' | relative_url }}"><span class="evidence-type">SOURCE REVIEW</span><h3>File inventory</h3><p>Reviewed roles of the supplied Pi files and how their software paths differ.</p><span class="evidence-arrow">↗</span></a>
     <a class="evidence-card" href="{{ '/docs/NEXT_STAGE_ROADMAP.html' | relative_url }}"><span class="evidence-type">PRODUCT INVESTIGATION</span><h3>Next-stage roadmap</h3><p>A discovery-first sequence from prototype evidence to controlled validation.</p><span class="evidence-arrow">↗</span></a>
     <a class="evidence-card" href="{{ '/docs/PUBLIC_RELEASE.html' | relative_url }}"><span class="evidence-type">RELEASE PLAN</span><h3>Safe cleanup plan</h3><p>A reversible route from private thesis materials to a public portfolio.</p><span class="evidence-arrow">↗</span></a>
   </div>
