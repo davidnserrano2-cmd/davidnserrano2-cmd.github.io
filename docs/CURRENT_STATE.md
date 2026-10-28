@@ -1,76 +1,76 @@
 ---
 layout: document
 title: Current-State Assessment
-description: Current application paths, data stores, integration gaps, and discovery questions.
+description: Application paths, data stores, integration boundaries, and security findings from the supplied thesis project files.
 ---
 
 # Current-State Assessment
 
-**Status:** Portfolio analysis based on the supplied Pi folder. The findings are not stakeholder-approved requirements.
+**Scope:** This assessment reviews the supplied Raspberry Pi project folder and compares its code paths with the architecture described in the thesis.
 
 ## Executive summary
 
-The thesis describes one intended architecture: an Arduino Nano 33 IoT handles RFID/keypad/tamper inputs and physical feedback; a Raspberry Pi Zero 2 W handles access decisions, SQLite event logging, serial recovery, and a Tkinter admin interface. The supplied Pi folder contains several versions and alternative data paths, not one clearly identified integrated application. In the supplied code snapshot, the dashboard, TCP server variants, and PostgreSQL serial logger each open the serial device directly. They also represent different user and event-storage approaches. The supplied code snapshot does not identify which variant powered the thesis demonstration.
+The thesis describes an Arduino Nano 33 IoT connected to a Raspberry Pi Zero 2 W. The Arduino reads RFID, keypad, and tamper inputs and drives local feedback. The Pi evaluates access requests, records events in SQLite, and supports a Tkinter administrator dashboard.
 
-The code review identifies an integration decision: define one operating scenario and one system of record before consolidating code. The variants are separate paths; running them together creates competing serial connections.
+The supplied Pi folder contains separate implementations rather than one integrated runtime. The dashboard, TCP server variants, and PostgreSQL logger each open the serial device directly. The code snapshot does not identify which server variant powered the thesis demonstration.
 
 ## System context
 
-The intended business flow is to read an access credential, evaluate the submitted factors, give the person a clear allow/deny outcome, and make the event available to an administrator. The thesis architecture identifies an RC522 reader, ZRX543 keypad, endstop tamper switch, 9600-baud serial link, SQLite store, Tkinter dashboard, LCD, RGB LED, and buzzer. The firmware source is not present in this Pi folder; the available Python test script is only a serial message sender. See the [thesis foundation and system walkthrough](THESIS_FOUNDATION.md) for the design-vs-code boundary.
+The intended workflow reads an access credential, evaluates the required factors, returns an allow or deny outcome, and makes the event available to an administrator. The thesis architecture names an RC522 reader, ZRX543 keypad, endstop tamper switch, 9600-baud serial link, SQLite store, Tkinter dashboard, LCD, RGB LED, and buzzer.
+
+The Arduino firmware is not present in the supplied Pi folder. The available Python test script sends serial messages; it is not firmware. See the [thesis foundation and system walkthrough](THESIS_FOUNDATION.md) for the distinction between the thesis design and the supplied code.
 
 ```mermaid
 flowchart LR
-    HW[RFID reader and keypad] --> ARD[Arduino firmware - not included in Pi copy]
+    HW[RFID reader and keypad] --> ARD[Arduino firmware - not in Pi copy]
     ARD <--> SER[Serial connection · 9600 baud per thesis]
-    SER --> DESK[Desktop dashboard path - opens serial directly]
-    SER --> TCP[Pi TCP server path - opens serial directly]
-    SER --> PG[PostgreSQL logger path - opens serial directly]
+    SER --> DESK[Desktop dashboard · direct serial]
+    SER --> TCP[Pi TCP server variants · direct serial]
+    SER --> PG[PostgreSQL logger · direct serial]
     DESK --> JSON[Local JSON user file]
     TCP --> SQLITE[SQLite event database]
     SQLITE --> VIEW[Local SQLite log viewer]
     PG --> POSTGRES[(PostgreSQL event schema)]
 ```
 
-The diagram below shows alternative paths found in the supplied Pi folder. It does not reproduce the thesis's intended runtime and does not imply that these alternatives were deployed together. Sharing a physical serial port between them would need an explicit connection owner or broker.
+The diagram maps alternatives found in the supplied folder. It is not a diagram of one combined deployment. The folder does not show a shared serial connection broker.
 
 ## Component inventory
 
-| Component | Observed responsibility | Current-state concern |
+| Component | Observed responsibility | Current-state finding |
 |---|---|---|
-| Desktop dashboard | Admin login, status/log screens, user management, direct serial connection, local JSON user storage | Duplicate copies exist; it does not appear to use the Pi server or PostgreSQL logger interface |
+| Desktop dashboard | Admin login, status and log screens, user management, direct serial connection, local JSON user storage | Separate desktop path; it does not use the Pi TCP server or PostgreSQL logger interface |
 | Minimal TCP server | Relays network-client messages to the serial device | No user store or event database |
-| SQLite server variants | Add event logging; later variant adds a separate network log port and auth flow | Bind to all interfaces; the legacy network protocol has no server-side client authentication or encryption |
-| PostgreSQL serial logger | Reads serial messages and records access/security events | Owns the serial connection too; it writes event data but is not the dashboard's user-management service |
-| SQLite database and viewer | Stores access logs and displays recent rows locally | Database contains historical demo activity; keep it and its journal out of public GitHub |
-| PostgreSQL schema | Defines users, devices, access logs, and security events with keys and constraints | A different persistence path from the SQLite server variants; needs to be mapped to actual workflows |
-| Python serial test sender | Sends test messages over a fixed serial connection | Hardware-specific test utility, not a repeatable demo without the device |
-| Local virtual environment | Captures a machine-specific Python installation | Rebuild from a dependency manifest; do not publish the environment directory |
+| SQLite server variants | Provide network access and add SQLite event logging; later variants add authentication behavior and a separate log port | Bind to all interfaces; the legacy protocol has no client authentication or encryption |
+| PostgreSQL serial logger | Reads serial messages and writes access and security events to PostgreSQL | Separate event-logging path; it does not provide dashboard user administration |
+| SQLite database and viewer | Stores access events and displays local rows | Contains historical demonstration activity; the database and journal are excluded from the public package |
+| PostgreSQL schema | Defines users, devices, access logs, and security events | Separate data model from the SQLite server variants; the supplied files do not map it to the demonstrated workflow |
+| Python serial test sender | Sends test messages over a fixed serial connection | Hardware-oriented utility that requires the Arduino device |
+| Local virtual environment | Captures a machine-specific Python installation | Machine-specific dependency environment; excluded from the public package |
 
-## Data and process observations
+## Data, integration, and security findings
 
-- **User data is defined in multiple places:** the dashboard and auth-server variants use a local JSON file, while the PostgreSQL schema defines a relational users table. The supplied PostgreSQL logger records events and does not administer users.
-- **Event data is stored through separate paths:** the older server versions write SQLite events; the serial logger writes PostgreSQL events. The included SQLite viewer reads only the local SQLite database.
-- **Credential exposure in logs:** older serial/server paths preserve raw messages in logs. The public demonstration excludes raw messages and secret factors.
-- **UI/server boundary:** the dashboard and Pi server each open serial directly. The reviewed snapshot contains no shared connection broker.
+- **Separate application paths:** the desktop dashboard uses a local JSON user file; SQLite server variants store events in SQLite; the PostgreSQL logger writes events to PostgreSQL.
+- **Serial ownership:** the dashboard, TCP server variants, and PostgreSQL logger each open serial directly. The supplied folder contains no shared connection broker.
+- **Credential handling:** older serial and server paths preserve raw messages in logs. The public demonstration excludes raw messages and secret factors.
 - **Network security:** the legacy TCP server variants listen on all interfaces without client authentication or protocol encryption. Their network exposure is unsafe for public or shared networks.
 - **Configuration:** serial paths, ports, user data, and database choices are embedded in separate programs and differ across variants.
+- **Database status:** the SQLite database contains historical demonstration activity. The PostgreSQL schema defines a different persistence model.
 
-## Open design decisions
+## Design decisions not established by the supplied files
 
-1. Deployment scope: one local door or administrator access from another computer.
-2. Administrator roles for adding, deactivating, and reviewing users.
-3. Access behavior during database or network outages.
-4. Required event details and retention period.
-5. Required authentication factors and approved alternate paths.
-6. Location of the Arduino firmware; the supplied Pi copy does not include it.
-7. Authoritative database and local-versus-networked deployment model.
+- Deployment scope: one local door or administrator access from another computer
+- Administrator roles for adding, deactivating, and reviewing users
+- Access behavior during database, network, or serial-device outages
+- Required event fields and retention period
+- Required authentication factors and approved alternate paths
+- Location of the Arduino firmware; it is not in the supplied Pi folder
+- Authoritative database and local-versus-networked deployment model
 
-## Architecture options identified in the review
+## Deployment patterns represented in the code
 
-Two future-state options identified in the review:
+**Local-first:** one Pi application owns serial, uses one local database, and provides an administrator interface on the same machine. This keeps the operating path on the device.
 
-- **Local-first:** one Pi application owns the serial port, uses one local database, and provides an administrator interface on the same machine. This minimizes network and deployment complexity.
-- **Service-and-dashboard:** one Pi service owns the serial port and database connection; a separately authenticated dashboard accesses it through a documented API. This better supports remote administration but adds deployment, authentication, and network-security work.
+**Service and dashboard:** one Pi service owns serial and database access; a separately authenticated dashboard uses a documented API. This supports remote administration and adds network, authentication, and deployment requirements.
 
-The options differ in deployment complexity, remote-administration support, and network-security requirements. Public screenshots and demonstrations use synthetic data.
-
+These are architecture patterns for comparison, not a claim that either is a production design. The thesis demo recordings show the demonstrated application and physical outcomes; the source snapshot does not establish that the alternative server paths ran together.
