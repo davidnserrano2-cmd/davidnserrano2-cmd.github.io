@@ -28,10 +28,10 @@ This inventory describes the supplied Pi-folder copy reviewed for the portfolio.
 | File | Reviewed role | Release note |
 |---|---|---|
 | `access_logs.db` | SQLite access-event database (reviewed as a local historical database; integrity check reported `ok`). | Private historical demo data. Excluded from public release. |
-| `access_logs.db-journal` | SQLite rollback journal associated with database activity. | Transient database state; never publish. Exclude all SQLite database, journal, WAL, and SHM files. |
+| `access_logs.db-journal` | SQLite rollback journal associated with database activity. | Transient database state; all SQLite database, journal, WAL, and SHM files are excluded from the public package. |
 | `rfid_users.json` | Local user/credential configuration used by one or more Python paths. | Contains user and credential material. Excluded from public release. |
-| `.venv/` | Machine-specific Python environment and installed dependencies. | Do not publish. Replace with a reviewed dependency manifest and clean setup instructions. |
-| `thesis_schema.sql` | PostgreSQL schema for users, devices, access logs, and security events. | Best candidate for a sanitized technical artifact after a line-by-line scan for inline credentials, sample identifiers, and personal data. Current portfolio describes it but does not reproduce it. |
+| `.venv/` | Machine-specific Python environment and installed dependencies. | Machine-specific environment; excluded from the public package. A dependency manifest and setup guide are not included. |
+| `thesis_schema.sql` | PostgreSQL schema for users, devices, access logs, and security events. | Schema design artifact; not reproduced in the public portfolio. |
 
 ## Architecture and version relationship
 
