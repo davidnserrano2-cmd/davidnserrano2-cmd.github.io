@@ -1,59 +1,54 @@
 ---
 layout: document
-title: Requirements Catalogue
-description: Portfolio-developed functional and nonfunctional requirements with acceptance conditions.
+title: Requirements Analysis
+description: Functional and nonfunctional requirements for a future version of the RFID access-control prototype.
 ---
 
-# Requirements Catalogue
+# Requirements Analysis
 
-**Status:** Portfolio analysis artifact derived from the thesis and supplied code. These requirements are not stakeholder-approved or implemented in the prototype.
+**Scope:** These portfolio-developed requirements describe a successor version, based on the thesis and supplied code. They are not stakeholder-approved; the acceptance criteria below have not been tested in a new implementation.
 
-## Stakeholders and priorities
+## System actors
 
-- **Administrator:** manages authorized users and reviews events.
-- **Person requesting access:** receives a clear, timely outcome.
-- **Support technician:** identifies device, connection, and database problems.
-- **Project sponsor:** needs a maintainable solution with an understandable operating cost and risk profile.
+- **Person requesting access:** presents credentials and receives an outcome.
+- **Administrator:** manages users and reviews access events.
+- **Support technician:** investigates device, connection, and persistence failures.
 
-Priority uses MoSCoW: **Must** is required for the demonstration's core workflow; **Should** improves operational usefulness; **Could** is optional within the timebox.
+Priorities use MoSCoW: **Must** is essential to the core workflow; **Should** improves operational usefulness; **Could** is optional to the initial scope.
 
 ## Functional requirements
 
-| ID | Requirement | Priority | Acceptance condition (not executed) | Status |
+| ID | Requirement | Priority | Acceptance criteria | Prototype evidence |
 |---|---|---|---|---|
-| FR-01 | The system shall evaluate an access request using the configured authentication factors for an active user. | Must | Given an active synthetic user and valid required factors, the system records an allow outcome; an invalid factor or inactive user produces a deny outcome. | Not implemented |
-| FR-02 | The system shall provide a clear outcome to the person requesting access and an explanatory status to the administrator. | Must | Allow, deny, and unavailable states are distinguishable in the demonstration without revealing secret factors. | Portfolio analysis |
-| FR-03 | The system shall record each access outcome with a timestamp, device reference, authentication method, result, and an appropriate failure reason. | Must | A reviewer can locate the corresponding event for successful and unsuccessful synthetic scenarios. | Not implemented |
-| FR-04 | The system shall allow an administrator to review and filter recent access events. | Must | An administrator can find events by time range, device, result, and failure category in the chosen interface. | Portfolio analysis |
-| FR-05 | The system shall allow an authorized administrator to add, update, or deactivate a user. | Should | A deactivated synthetic user is denied access, and the user-management action is auditable. | Not implemented |
-| FR-06 | The system shall report device, serial-connection, and persistence failures to the administrator. | Should | Disconnecting the simulator or database produces a visible degraded state and a documented recovery action. | Portfolio analysis |
-| FR-07 | The demonstration shall support a simulator that emits documented device messages without requiring physical hardware. | Must | A clean install can demonstrate allow, deny, and device-error scenarios with synthetic records. | Portfolio requirement |
-| FR-08 | The system shall record tamper and repeated-failure events separately from ordinary access outcomes. | Could | A simulated tamper or repeated-failure scenario is recorded as a distinct event category. | Not implemented |
+| FR-01 | Evaluate an access request using the configured factors for an active user. | Must | A valid request records an allow outcome; an invalid factor or inactive user records a deny outcome. | Allow and deny outcomes are shown in the thesis demonstration. |
+| FR-02 | Present a clear outcome to the person requesting access and status to the administrator. | Must | Allow, deny, and unavailable states are distinguishable without revealing secret factors. | Device outcomes and dashboard status are shown in the recordings. |
+| FR-03 | Record each access outcome with a timestamp, device reference, authentication method, result, and failure reason. | Must | An administrator can locate events for successful and unsuccessful scenarios. | Activity logging is shown; complete field coverage is not demonstrated. |
+| FR-04 | Let an administrator review and filter recent access events. | Must | An administrator can filter by time range, device, result, and failure category. | The dashboard displays recent activity; filtering is not demonstrated. |
+| FR-05 | Let an authorized administrator add, update, or deactivate a user. | Should | A deactivated user is denied access, and each user-management action is auditable. | User-management controls are present; audit behavior is not demonstrated. |
+| FR-06 | Report device, serial-connection, and persistence failures to the administrator. | Should | Failure states are visible and include a documented recovery action. | Serial disconnection is visible in the dashboard; database failure handling is not demonstrated. |
+| FR-07 | Provide a simulator for documented device messages without physical hardware. | Must | A clean installation demonstrates allow, deny, and device-error scenarios with synthetic records. | Not included in the supplied project copy. |
+| FR-08 | Record tamper and repeated-failure events separately from ordinary access outcomes. | Could | Simulated tamper and repeated-failure scenarios are recorded as distinct event categories. | Not demonstrated in the supplied files. |
 
 ## Nonfunctional requirements
 
-| ID | Requirement | Priority | Acceptance condition (not executed) | Status |
+| ID | Requirement | Priority | Acceptance criteria | Prototype evidence |
 |---|---|---|---|---|
-| NFR-01 | The system shall not place PINs, admin passwords, or raw authentication messages in access logs or public examples. | Must | Sample records and displayed event details contain no secret factors; public repository review finds no live data files. | Security baseline |
-| NFR-02 | Credential material shall be protected in storage and configuration; application secrets shall not be committed to source control. | Must | Setup instructions use local configuration outside the repository and provide only placeholder examples. | Security baseline |
-| NFR-03 | Any network-accessible administrator function shall require authentication and use a documented, restricted network configuration. | Must if network UI selected | An unauthenticated client cannot view logs or change users; demo instructions describe the local-only default. | Depends on architecture choice |
-| NFR-04 | The system shall have a documented failure policy for loss of serial communication, database access, or network connectivity. | Must | For each failure condition, the design states the access decision, visible status, event-handling behavior, and recovery step. | Not implemented |
-| NFR-05 | A new reviewer shall be able to install and run the synthetic demonstration from documented steps. | Must | The documented setup reaches the demo workflow without the original database, credentials, or hardware. | Portfolio requirement |
-| NFR-06 | The system shall retain only event information required for operations and investigation. | Should | The data dictionary identifies purpose and sensitivity; a retention period is not set. | Not implemented |
+| NFR-01 | Exclude PINs, admin passwords, and raw authentication messages from access logs and public examples. | Must | Logs and public demonstrations reveal no secret factors or live records. | Public recordings mask inputs; older source variants preserve raw messages in logs. |
+| NFR-02 | Protect credential material in storage and configuration; keep application secrets out of source control. | Must | Local configuration stores secrets outside the repository; public examples contain no credentials. | Legacy source variants contain demo credentials and do not meet this requirement. |
+| NFR-03 | Require authentication and restricted network configuration for network-accessible administration. | Must if network administration is selected | Unauthenticated clients cannot view logs or change users. | Legacy TCP variants have no client authentication or protocol encryption. |
+| NFR-04 | Define system behavior during serial, database, or network outages. | Must | Each failure case defines access behavior, visible status, event handling, and recovery. | The supplied files do not define one shared failure policy. |
+| NFR-05 | Allow a reviewer to run the synthetic demonstration from documented setup steps. | Must | The demonstration runs without the original database, credentials, or physical hardware. | A hardware-free simulator is not included in the supplied project copy. |
+| NFR-06 | Retain only event information required for operations and investigation. | Should | A data dictionary defines purpose, sensitivity, and retention for each event field. | No event-retention policy is included in the supplied materials. |
 
-## Traceability and scope
+## Traceability
 
-- FR-01 through FR-03 describe the central access and audit workflow described by the thesis prototype; factor policy and event detail still require confirmation.
-- FR-04 and FR-05 reflect administrator screens and functions in the supplied dashboard, not verified stakeholder approval.
-- FR-06 and FR-07 address the serial-connection problems and hardware-free demonstration need identified during the portfolio review.
-- NFR-01 and NFR-02 are public-release safeguards for the case study; they are not a claim that the existing prototype meets them.
-- NFR-03 applies only if the future-state option exposes an interface over a network.
-- No production service-level target, retention period, user count, or availability percentage is set yet. Those require discovery rather than invention.
+FR-01 through FR-03 cover the thesis access and audit workflow. FR-04 through FR-06 map to administrator and status functions in the supplied dashboard and code. FR-07 and FR-08 define additional successor-version behaviors. NFR-01 and NFR-02 address credential handling observed in the legacy source paths; NFR-03 addresses their network exposure. The remaining requirements define failure, demonstration, and data-retention criteria for a consolidated version.
 
-## Open decisions
+## Decisions outside the supplied evidence
 
-1. Which authentication factors are mandatory, and what is the approved recovery process when a factor is unavailable?
-2. Deployment model: local-only or remote administration.
-3. Access policy during database or serial-device outages.
-4. Which event fields are required for investigations, and what retention period is acceptable?
-5. User-management roles and approval/audit controls for administrative changes.
+- Required authentication factors and recovery policy
+- Local-only or remote administration
+- Access behavior during serial, database, or network failures
+- Required event fields and retention period
+- User-management roles and audit policy
+- Security and support controls for any real-world pilot
