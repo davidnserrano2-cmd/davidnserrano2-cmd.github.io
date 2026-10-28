@@ -35,3 +35,6 @@
 @media(max-width:600px){.profile-grid{grid-template-columns:minmax(0,1fr)}.profile-span{grid-column:auto}.skill-tags{column-gap:9px;row-gap:8px}.demo-split{grid-template-columns:minmax(0,1fr)}.demo-pane{padding:14px}}
 .diagram-scroll{width:100%;max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin:20px 0;background:#f7f8f5}.document-content .diagram-scroll img{display:block;width:max(100%,760px);max-width:none;height:auto;margin:0;border:0;border-radius:0}
 
+
+/* Contact and diagram readability refinements */
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:26px 0 30px}.closeout-note{max-width:100%;font-size:11px;line-height:1.5;color:var(--muted)}.diagram-caption{color:#60727c}.thesis-diagram{display:block;width:100%;height:auto}@media(max-width:600px){.contact-links{align-items:stretch;flex-direction:column}.contact-links .button{justify-content:center}}
