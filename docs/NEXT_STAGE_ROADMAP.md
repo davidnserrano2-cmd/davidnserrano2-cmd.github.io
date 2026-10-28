@@ -1,35 +1,32 @@
 ---
 layout: document
-title: Responsible Next-Stage Roadmap
-description: A discovery-first path from thesis prototype toward controlled product evaluation.
+title: Next-Stage Roadmap
+description: Future work from the thesis prototype through requirements, architecture, and controlled validation.
 ---
 
-# Responsible Next-Stage Roadmap
+# Next-Stage Roadmap
 
-**Status:** Portfolio roadmap based on the thesis and code review. It is not a company plan, funded roadmap, or customer validation.
+**Scope:** This roadmap describes future work based on the thesis and source review. It is separate from the completed academic prototype and does not represent customer or production validation.
 
-The thesis identifies future directions including stronger device communication and credential protection, multiple access points, remote administration, and expanded usability. The next step is to determine which problems matter to a real user before selecting features or building a larger system.
-
-| Stage | Questions and work | Evidence to produce | Exit decision |
+| Stage | Work | Evidence produced | Exit condition |
 |---|---|---|---|
-| 1. Problem discovery | Which setting has a specific access-management problem? Who uses the door, administers credentials, supports the system, and pays for it? What existing solution is used? | Interview notes, workflow map, problem statement, alternative/competitor scan, open-questions register | Proceed when research confirms a defined user problem and buyer |
-| 2. Requirements and risk | What must happen during power, network, database, reader, or Pi failure? What privacy, physical-safety, accessibility, audit, and support needs apply? | Validated requirements, threat model, data inventory and retention policy, failure-mode analysis | Record the safety and usefulness decision for a controlled lab iteration |
-| 3. Architecture and prototype | Which device owns serial communication? Which data store is authoritative? How are credentials enrolled/revoked? Is local-only administration sufficient? | Selected architecture, interface/protocol contract, synthetic demo, setup/runbook, test scenarios | Build only the smallest testable workflow that addresses validated needs |
-| 4. Verification and pilot design | Can expected flows and failure cases be repeated? Can credentials and event data be protected? Who monitors and supports a pilot? What approvals and controls are required? | Test evidence, independent security review, operational playbook, pilot scope and rollback plan | Do not move into a real access-control setting until safety, security, and operations gates are met |
+| 1. Problem context | Define the access-control setting, user roles, current process, and existing alternatives. | Process map, problem statement, user-role summary, alternatives review | A defined user problem and project scope |
+| 2. Requirements and risk | Define functional, privacy, security, safety, accessibility, support, and failure-handling requirements. | Traceable requirements, threat model, data inventory, failure-mode analysis | Requirements and operating constraints documented |
+| 3. Architecture and prototype | Assign one serial connection owner and one authoritative data store. Define credential enrollment and revocation. Build a synthetic simulator and documented setup workflow. | Architecture decision, interface contract, synthetic demo, setup guide, test scenarios | A reproducible prototype that addresses the defined requirements |
+| 4. Verification and readiness | Test normal and failure scenarios. Review credential protection, event handling, privacy, physical safety, and support operations. | Test results, independent security review, operational plan, controlled-pilot scope | Safety, security, and operations criteria met before any real-world pilot |
 
-## Decisions that remain open
+## Decisions beyond the thesis evidence
 
-- Target customer and access-control use case
-- Local-only versus networked administration
-- Offline behavior and safe response to each component failure
-- Credential lifecycle, recovery, revocation, and administrator roles
-- Event purpose, visibility, retention, export, and deletion
-- Hardware tamper and physical-installation requirements
-- Deployment, maintenance, support, and replacement model
-- Current component costs, installation costs, liability, and commercial viability
+- Target access-control setting and user roles
+- Local-only or remote administration
+- Access behavior during serial, database, or network failures
+- Credential lifecycle, recovery, and administrator permissions
+- Event purpose, required fields, and retention period
+- Hardware tamper, installation, maintenance, and support controls
+- Deployment costs, liability, and commercial viability
 
-## Why the prototype is not the product
+## Product boundary
 
-The thesis documents a single academic/demo system and identifies future work. It does not establish demand, customer willingness to pay, production security, installation readiness, serviceability, legal compliance, or commercial economics. The old prototype cost-estimate document is not a current supplier quote or a business case. Those questions need new research and evidence.
+The thesis and recordings document an academic demonstration. They do not establish customer demand, willingness to pay, production security, installation readiness, serviceability, legal compliance, or commercial viability. The prototype cost estimate is historical project material, not a current supplier quote or business case.
 
-The goal of this roadmap is to preserve the original project as credible proof of systems work while giving future development a disciplined path from idea to validated requirements and controlled testing.
+This roadmap separates the demonstrated thesis work from future product investigation and controlled testing.
