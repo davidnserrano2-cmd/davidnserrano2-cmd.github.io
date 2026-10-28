@@ -28,7 +28,7 @@ Priority uses MoSCoW: **Must** is required for the demonstration's core workflow
 | FR-05 | The system shall allow an authorized administrator to add, update, or deactivate a user. | Should | A deactivated synthetic user is denied access, and the user-management action is auditable. | Not implemented |
 | FR-06 | The system shall report device, serial-connection, and persistence failures to the administrator. | Should | Disconnecting the simulator or database produces a visible degraded state and a documented recovery action. | Portfolio analysis |
 | FR-07 | The demonstration shall support a simulator that emits documented device messages without requiring physical hardware. | Must | A clean install can demonstrate allow, deny, and device-error scenarios with synthetic records. | Portfolio requirement |
-| FR-08 | The system shall record security-relevant events separately from ordinary access outcomes when appropriate. | Could | A simulated tamper or repeated-failure scenario is recorded as a distinct event category. | Not implemented |
+| FR-08 | The system shall record tamper and repeated-failure events separately from ordinary access outcomes. | Could | A simulated tamper or repeated-failure scenario is recorded as a distinct event category. | Not implemented |
 
 ## Nonfunctional requirements
 
@@ -41,7 +41,7 @@ Priority uses MoSCoW: **Must** is required for the demonstration's core workflow
 | NFR-05 | A new reviewer shall be able to install and run the synthetic demonstration from documented steps. | Must | The documented setup reaches the demo workflow without the original database, credentials, or hardware. | Portfolio requirement |
 | NFR-06 | The system shall retain only event information required for operations and investigation. | Should | The data dictionary identifies purpose and sensitivity; a retention period is not set. | Not implemented |
 
-## Traceability and assumptions
+## Traceability and scope
 
 - FR-01 through FR-03 describe the central access and audit workflow described by the thesis prototype; factor policy and event detail still require confirmation.
 - FR-04 and FR-05 reflect administrator screens and functions in the supplied dashboard, not verified stakeholder approval.
