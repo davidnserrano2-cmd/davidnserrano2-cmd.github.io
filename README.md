@@ -14,7 +14,7 @@ This portfolio presents my honors-thesis RFID access-control prototype and a sys
 - [Thesis foundation and system walkthrough](docs/THESIS_FOUNDATION.md)
 - [Current-state assessment](docs/CURRENT_STATE.md)
 - [Source file inventory](docs/FILE_INVENTORY.md)
-- [Requirements catalogue](docs/REQUIREMENTS.md)
+- [Requirements analysis](docs/REQUIREMENTS.md)
 - [Next-stage roadmap](docs/NEXT_STAGE_ROADMAP.md)
 - [Public repository scope](docs/PUBLIC_RELEASE.md)
 
