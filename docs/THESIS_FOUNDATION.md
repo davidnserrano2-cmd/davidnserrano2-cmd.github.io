@@ -25,7 +25,7 @@ The thesis reports work on inconsistent reads, serial interruption and reconnect
 
 ## The paper and the supplied code are related evidence, not a perfect match
 
-The paper presents one intended system architecture. The Pi folder contains multiple code variants and storage paths. In the files reviewed for this case study, the dashboard and network/server paths appear to open serial themselves, with local JSON, SQLite, and PostgreSQL represented in different alternatives. Those variants should not be depicted as components that all ran together.
+The paper presents one intended system architecture. The Pi folder contains multiple code variants and storage paths. The reviewed dashboard and network/server paths each open serial directly. Local JSON, SQLite, and PostgreSQL belong to separate alternatives; they were not one combined runtime.
 
 This documentation-to-implementation gap is a useful systems-analysis finding: verify which build was used for a given demonstration, identify the authoritative user and event stores, and assign one owner to the serial connection before designing a consolidated next version. File names such as `final` and `v2` do not establish chronology by themselves.
 
@@ -41,7 +41,7 @@ The architecture separates three responsibilities: the Arduino reads inputs and 
 
 [Open the full-size system architecture diagram]({{ '/assets/system-architecture.svg' | relative_url }})
 
-### Proposed data concepts
+### Thesis data concepts
 
 The paper's ERD separates four concepts:
 
@@ -54,13 +54,13 @@ The paper's ERD separates four concepts:
 
 This is a summary of the thesis data model, not a claim that every table was implemented in the demonstrated application. Public examples should use synthetic identities and must never contain card UIDs, PINs, passwords, raw authentication messages, or live event history.
 
-### Database design · Proposed Access-Control Data Model
+### Database design · Thesis Access-Control Data Model
 
-The data model separates users, devices, authentication attempts, and security events. This structure is intended to support access auditing, incident investigation, and administrative reporting. Nullable relationships can preserve events when a user or device cannot be positively identified. The diagram below is labeled **Proposed Access-Control Data Model** because the thesis ERD is design evidence and does not establish that this entire schema ran in the demonstrated application.
+The thesis ERD separates users, devices, access attempts, and security events to represent access auditing and administrative reporting. The diagram is design evidence; it does not show that the full schema ran in the demonstrated application.
 
-<div class="diagram-scroll"><img src="{{ '/assets/access-control-erd.svg' | relative_url }}" alt="Proposed data model with Users, Devices, Access_Logs, and Security_Events. Users and Devices each have one-to-many relationships with Access_Logs; Devices has a one-to-many relationship with Security_Events. The foreign keys shown as nullable remain optional." loading="lazy"></div>
+<div class="diagram-scroll"><img src="{{ '/assets/access-control-erd.svg' | relative_url }}" alt="Thesis data model with Users, Devices, Access_Logs, and Security_Events. Users and Devices each have one-to-many relationships with Access_Logs; Devices has a one-to-many relationship with Security_Events. The foreign keys shown as nullable remain optional." loading="lazy"></div>
 
-[Open the full-size proposed data model]({{ '/assets/access-control-erd.svg' | relative_url }})
+[Open the full-size thesis data model]({{ '/assets/access-control-erd.svg' | relative_url }})
 
 ### Hardware integration
 
@@ -84,4 +84,3 @@ If this idea is developed toward a production company, the next steps are proble
 - The Arduino firmware was not present in the supplied Pi folder copy reviewed for the code inventory.
 - Hardware and dashboard images in the paper were not copied into this portfolio; this diagram is a clean redraw of the paper's architecture figure.
 - The portfolio's current-state observations come from the supplied Pi files; the thesis provides design intent and reported demo behavior.
-
