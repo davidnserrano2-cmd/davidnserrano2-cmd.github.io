@@ -53,7 +53,7 @@ Priority uses MoSCoW: **Must** is required for the demonstration's core workflow
 ## Open decisions
 
 1. Which authentication factors are mandatory, and what is the approved recovery process when a factor is unavailable?
-2. Should the future state be local-only or support remote administration?
-3. What should happen during a database or serial-device outage: deny all access, use a limited offline policy, or use another approved behavior?
+2. Deployment model: local-only or remote administration.
+3. Access policy during database or serial-device outages.
 4. Which event fields are required for investigations, and what retention period is acceptable?
-5. Who may manage users, and how should administrative changes be approved and audited?
+5. User-management roles and approval/audit controls for administrative changes.
