@@ -49,27 +49,28 @@ The diagram below shows alternative paths found in the supplied Pi folder. It do
 ## Data and process observations
 
 - **User data is defined in multiple places:** the dashboard and auth-server variants use a local JSON file, while the PostgreSQL schema defines a relational users table. The supplied PostgreSQL logger records events and does not administer users.
-- **Event data has multiple possible stores:** the older server versions write SQLite events; the serial logger writes PostgreSQL events. The included SQLite viewer reads only the local SQLite database.
+- **Event data is stored through separate paths:** the older server versions write SQLite events; the serial logger writes PostgreSQL events. The included SQLite viewer reads only the local SQLite database.
 - **Credential exposure in logs:** older serial/server paths preserve raw messages in logs. The public demonstration excludes raw messages and secret factors.
-- **The current UI/server boundary is unclear:** the dashboard reads serial directly, while the Pi server also reads serial. A target design should assign one component ownership of that connection.
-- **Network exposure needs a deliberate design:** the legacy TCP server variants listen on all interfaces and do not authenticate clients or encrypt their protocol. They should remain disabled in a public-facing or shared-network demo until replaced or protected.
-- **Configuration is inconsistent:** serial paths, ports, user data, and database choices are embedded in different programs. The future-state design should document per-environment configuration and safe defaults.
+- **UI/server boundary:** the dashboard and Pi server each open serial directly. The reviewed snapshot contains no shared connection broker.
+- **Network security:** the legacy TCP server variants listen on all interfaces without client authentication or protocol encryption. Their network exposure is unsafe for public or shared networks.
+- **Configuration:** serial paths, ports, user data, and database choices are embedded in separate programs and differ across variants.
 
-## Questions to resolve during discovery
+## Open design decisions
 
-1. Is the intended deployment a single local door, or should an administrator connect from another computer?
-2. Which person or role is allowed to add, deactivate, and review users?
-3. Must access continue if the database or network is unavailable? What should the device do in each failure case?
-4. What event details are operationally necessary, and how long should each be retained?
-5. Is RFID plus PIN required for every user, or are there approved alternate authentication paths?
-6. Is the original Arduino firmware available elsewhere, or should the portfolio demo use a documented simulator?
-7. Is PostgreSQL the intended future database, or should the project remain a single-device local system?
+1. Deployment scope: one local door or administrator access from another computer.
+2. Administrator roles for adding, deactivating, and reviewing users.
+3. Access behavior during database or network outages.
+4. Required event details and retention period.
+5. Required authentication factors and approved alternate paths.
+6. Location of the Arduino firmware; the supplied Pi copy does not include it.
+7. Authoritative database and local-versus-networked deployment model.
 
 ## Architecture options identified in the review
 
-Compare two future-state options before implementation:
+Two future-state options identified in the review:
 
 - **Local-first:** one Pi application owns the serial port, uses one local database, and provides an administrator interface on the same machine. This minimizes network and deployment complexity.
 - **Service-and-dashboard:** one Pi service owns the serial port and database connection; a separately authenticated dashboard accesses it through a documented API. This better supports remote administration but adds deployment, authentication, and network-security work.
 
-Choose only after documenting user needs, failure behavior, data-retention expectations, and operational constraints. Use synthetic data for all public screenshots and demonstrations.
+The options differ in deployment complexity, remote-administration support, and network-security requirements. Public screenshots and demonstrations use synthetic data.
+
