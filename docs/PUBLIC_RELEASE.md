@@ -25,7 +25,7 @@ The legacy source variants remain private for this first application-focused rel
 9. Keep job-search trackers, application notes, and private planning outside the public portfolio.
 10. Inspect the final repository contents and commit diff for excluded files and secret-like values before making the repository public.
 
-## Suggested clean repository structure
+## Public repository structure
 
 ```text
 rfid-access-control-case-study/
