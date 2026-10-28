@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ page.description | default: site.description }}">
   <title>{{ page.title | default: site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/site.css?v=5' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/site.css?v=6' | relative_url }}">
 </head>
 <body>
   <header class="site-header">
@@ -14,7 +14,36 @@
   </header>
   <main>{{ content }}</main>
   <footer class="site-footer"><span>David N. Serrano · Systems Analysis Portfolio</span><span>RFID thesis prototype case study</span></footer>
+  <script>
+    document.querySelectorAll("[data-fullscreen-target]").forEach((button) => {
+      const frame = document.getElementById(button.dataset.fullscreenTarget);
+      if (!frame) return;
+      const updateLabel = () => {
+        const active = document.fullscreenElement === frame || document.webkitFullscreenElement === frame;
+        button.textContent = active ? "Exit full screen" : "Full screen";
+      };
+      button.addEventListener("click", async () => {
+        try {
+          if (document.fullscreenElement === frame || document.webkitFullscreenElement === frame) {
+            if (document.exitFullscreen) await document.exitFullscreen();
+            else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+          } else if (frame.requestFullscreen) {
+            await frame.requestFullscreen();
+          } else if (frame.webkitRequestFullscreen) {
+            frame.webkitRequestFullscreen();
+          } else {
+            const video = frame.querySelector("video");
+            if (video && video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+          }
+        } catch (error) {
+          const video = frame.querySelector("video");
+          if (video && video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+        }
+      });
+      document.addEventListener("fullscreenchange", updateLabel);
+      document.addEventListener("webkitfullscreenchange", updateLabel);
+    });
+  </script>
 </body>
 </html>
-
 
