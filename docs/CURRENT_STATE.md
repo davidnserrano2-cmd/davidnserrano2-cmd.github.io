@@ -20,20 +20,19 @@ The intended workflow reads an access credential, evaluates the required factors
 
 The Arduino firmware is not present in the supplied Pi folder. The available Python test script sends serial messages; it is not firmware. See the [thesis foundation and system walkthrough](THESIS_FOUNDATION.md) for the distinction between the thesis design and the supplied code.
 
-```mermaid
-flowchart LR
-    HW[RFID reader and keypad] --> ARD[Arduino firmware - not in Pi copy]
-    ARD <--> SER[Serial connection · 9600 baud per thesis]
-    SER --> DESK[Desktop dashboard · direct serial]
-    SER --> TCP[Pi TCP server variants · direct serial]
-    SER --> PG[PostgreSQL logger · direct serial]
-    DESK --> JSON[Local JSON user file]
-    TCP --> SQLITE[SQLite event database]
-    SQLITE --> VIEW[Local SQLite log viewer]
-    PG --> POSTGRES[(PostgreSQL event schema)]
-```
+## Observed software paths
 
-The diagram maps alternatives found in the supplied folder. It is not a diagram of one combined deployment. The folder does not show a shared serial connection broker.
+| Path | Serial ownership | Data path |
+|---|---|---|
+| Desktop dashboard | Dashboard opens the Arduino serial connection | Local JSON user file |
+| TCP server variants | Pi server opens the Arduino serial connection | SQLite event log in database variants |
+| PostgreSQL logger | Logger opens the Arduino serial connection | PostgreSQL event store |
+
+Each path opens serial independently. The supplied folder contains no shared connection broker and does not document a combined deployment.
+
+
+
+
 
 ## Component inventory
 
