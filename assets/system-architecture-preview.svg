@@ -20,7 +20,7 @@
   <text x="705" y="164" class="eyebrow">LOCAL CONTROL</text><text x="705" y="205" class="head">Raspberry Pi Zero 2 W</text><text x="705" y="239" class="body">Python authentication · SQLite event log</text><text x="705" y="272" class="body">Outcome returns to Arduino</text>
   <path class="flow" d="M883 312V343"/>
   <rect class="card" x="681" y="350" width="403" height="56" rx="14"/>
-  <text x="705" y="385" class="eyebrow">ADMIN DASHBOARD · STATUS · LOGS · USER CONTROLS</text>
+  <text x="882" y="374" text-anchor="middle" class="eyebrow">ADMIN DASHBOARD</text><text x="882" y="394" text-anchor="middle" class="small">Status · event logs · user controls</text>
   <text x="38" y="373" class="small">The dashboard observes and administers the Pi application; physical feedback remains on the Arduino.</text>
 </svg>
 
