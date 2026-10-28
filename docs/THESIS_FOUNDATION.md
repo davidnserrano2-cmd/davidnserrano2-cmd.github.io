@@ -49,10 +49,10 @@ The paper's ERD separates four concepts:
 |---|---|---|
 | Users | Display identity, role, active status, and credential references | How are credentials enrolled, revoked, recovered, and protected? |
 | Devices | Device identity, name, location, and creation time | How are device ownership and location changes audited? |
-| Access logs | Time, device/user references, method, result, and failure reason | Which fields are necessary, and how long should events be retained? |
+| Access logs | Time, device/user references, method, result, and failure reason | Design consideration: event fields and retention period. |
 | Security events | Time, device, event type, severity, and notes | Which events require escalation, and who can review them? |
 
-This is a summary of the thesis data model, not a claim that every table was implemented in the demonstrated application. Public examples should use synthetic identities and must never contain card UIDs, PINs, passwords, raw authentication messages, or live event history.
+This is a summary of the thesis data model, not a claim that every table was implemented in the demonstrated application. Public examples use synthetic identities and exclude card UIDs, PINs, passwords, raw authentication messages, and live event history.
 
 ### Database design · Thesis Access-Control Data Model
 
@@ -76,7 +76,7 @@ The pin labels are transcribed from the supplied wiring image, not verified agai
 
 The completed work is an academic/demo prototype. The thesis itself identifies secure device communication, stronger credential handling, multiple access points, remote administration, and broader usability as future work. These items are opportunities for a next-stage product investigation; they are not current features.
 
-If this idea is developed toward a production company, the next steps are problem and customer discovery, threat modeling, privacy and safety requirements, operational failure policies, support/maintenance planning, and controlled validation in a non-critical environment. A physical access-control system should not be represented as production-ready until those requirements are implemented and independently reviewed.
+Future development direction: problem and customer discovery, threat modeling, privacy and safety requirements, operational failure policies, support planning, and controlled validation in a non-critical environment. The academic prototype is not production-ready; production readiness requires implementation of those controls and independent review.
 
 ## Evidence boundary
 
