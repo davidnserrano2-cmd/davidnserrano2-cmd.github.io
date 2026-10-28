@@ -48,7 +48,7 @@ The diagram below shows alternative paths found in the supplied Pi folder. It do
 
 ## Data and process observations
 
-- **User data has multiple possible owners:** the dashboard and auth-server variants use a local JSON file, while the PostgreSQL schema defines a relational users table. The supplied PostgreSQL logger records events and does not administer users.
+- **User data is defined in multiple places:** the dashboard and auth-server variants use a local JSON file, while the PostgreSQL schema defines a relational users table. The supplied PostgreSQL logger records events and does not administer users.
 - **Event data has multiple possible stores:** the older server versions write SQLite events; the serial logger writes PostgreSQL events. The included SQLite viewer reads only the local SQLite database.
 - **Credential exposure in logs:** older serial/server paths preserve raw messages in logs. The public demonstration excludes raw messages and secret factors.
 - **The current UI/server boundary is unclear:** the dashboard reads serial directly, while the Pi server also reads serial. A target design should assign one component ownership of that connection.
