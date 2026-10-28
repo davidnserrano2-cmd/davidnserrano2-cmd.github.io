@@ -1,12 +1,12 @@
 ---
 layout: document
 title: Responsible Next-Stage Roadmap
-description: A discovery-first path from thesis prototype to a product that could be evaluated for real-world use.
+description: A discovery-first path from thesis prototype toward controlled product evaluation.
 ---
 
 # Responsible Next-Stage Roadmap
 
-**Status:** Proposed sequence for future investigation. This is not an approved company plan, funded roadmap, or claim of customer validation.
+**Status:** Portfolio roadmap based on the thesis and code review. It is not a company plan, funded roadmap, or customer validation.
 
 The thesis identifies future directions including stronger device communication and credential protection, multiple access points, remote administration, and expanded usability. The next step is to determine which problems matter to a real user before selecting features or building a larger system.
 
