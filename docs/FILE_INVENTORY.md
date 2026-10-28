@@ -19,7 +19,7 @@ This inventory describes the supplied Pi-folder copy reviewed for the portfolio.
 | `pi_server_with_db_and_logport.py` | SQLite server variant with an additional log-related port/path. | Adds a separate log channel. |
 | `pi_server_auth_db_final.py` | Server variant combining authentication/database behavior. | A later iteration by naming, but `final` does not prove it supersedes all others. Demo authentication and network protections require remediation. |
 | `pi_server_auth_db_final_v2.py` | Revised authentication/database server variant. | Authentication/database server variant labeled v2; the filename alone does not establish release order or canonical status. |
-| `view_access_logs.py` | Local utility to inspect SQLite access events. | Useful operational support script; raw output can expose sensitive event data. A public example should use synthetic rows and redact identifiers. |
+| `view_access_logs.py` | Local utility to inspect SQLite access events. | Useful operational support script; raw output can expose sensitive event data. Public examples use synthetic rows and redact identifiers. |
 | `test_arduino.py` | Serial test sender for exercising the Arduino interface. | Hardware-oriented test utility, not a hardware-free demo. The supplied Pi copy did not include the corresponding Arduino firmware source. |
 | `thesis_logger/serial_logger.py` | Separate serial-reading logger that writes events to PostgreSQL. | Alternative persistence path; it also opens the serial connection directly, so it conflicts with other simultaneous serial owners unless deliberately brokered. |
 
