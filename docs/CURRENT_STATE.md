@@ -6,13 +6,13 @@ description: Current application paths, data stores, integration gaps, and disco
 
 # Current-State Assessment
 
-**Status:** Draft based on the supplied Pi folder; validate assumptions before treating them as stakeholder-approved requirements.
+**Status:** Portfolio analysis based on the supplied Pi folder. The findings are not stakeholder-approved requirements.
 
 ## Executive summary
 
-The thesis describes one intended architecture: an Arduino Nano 33 IoT handles RFID/keypad/tamper inputs and physical feedback; a Raspberry Pi Zero 2 W handles access decisions, SQLite event logging, serial recovery, and a Tkinter admin interface. The supplied Pi folder contains several versions and alternative data paths, not one clearly identified integrated application. In the supplied code snapshot, the dashboard, TCP server variants, and PostgreSQL serial logger each open the serial device directly. They also represent different user and event-storage approaches. The relationship between the thesis design and the exact code used in the demonstration needs to be confirmed.
+The thesis describes one intended architecture: an Arduino Nano 33 IoT handles RFID/keypad/tamper inputs and physical feedback; a Raspberry Pi Zero 2 W handles access decisions, SQLite event logging, serial recovery, and a Tkinter admin interface. The supplied Pi folder contains several versions and alternative data paths, not one clearly identified integrated application. In the supplied code snapshot, the dashboard, TCP server variants, and PostgreSQL serial logger each open the serial device directly. They also represent different user and event-storage approaches. The supplied code snapshot does not identify which variant powered the thesis demonstration.
 
-The immediate analysis recommendation is to document one operating scenario and select one system of record before consolidating code. Do not combine the variants by simply running them together.
+The code review identifies an integration decision: define one operating scenario and one system of record before consolidating code. The variants are separate paths; running them together creates competing serial connections.
 
 ## System context
 
@@ -48,9 +48,9 @@ The diagram below shows alternative paths found in the supplied Pi folder. It do
 
 ## Data and process observations
 
-- **User data has multiple possible owners:** the dashboard and auth-server variants use a local JSON file, while the PostgreSQL schema defines a relational users table. The supplied PostgreSQL logger appears focused on event logging rather than user administration.
+- **User data has multiple possible owners:** the dashboard and auth-server variants use a local JSON file, while the PostgreSQL schema defines a relational users table. The supplied PostgreSQL logger records events and does not administer users.
 - **Event data has multiple possible stores:** the older server versions write SQLite events; the serial logger writes PostgreSQL events. The included SQLite viewer reads only the local SQLite database.
-- **Credential material may enter event messages:** older serial/server paths preserve raw messages in logs. Before selecting a public demonstration flow, define which fields may be recorded and ensure secret factors never appear in event detail.
+- **Credential exposure in logs:** older serial/server paths preserve raw messages in logs. The public demonstration excludes raw messages and secret factors.
 - **The current UI/server boundary is unclear:** the dashboard reads serial directly, while the Pi server also reads serial. A target design should assign one component ownership of that connection.
 - **Network exposure needs a deliberate design:** the legacy TCP server variants listen on all interfaces and do not authenticate clients or encrypt their protocol. They should remain disabled in a public-facing or shared-network demo until replaced or protected.
 - **Configuration is inconsistent:** serial paths, ports, user data, and database choices are embedded in different programs. The future-state design should document per-environment configuration and safe defaults.
@@ -65,7 +65,7 @@ The diagram below shows alternative paths found in the supplied Pi folder. It do
 6. Is the original Arduino firmware available elsewhere, or should the portfolio demo use a documented simulator?
 7. Is PostgreSQL the intended future database, or should the project remain a single-device local system?
 
-## Initial analyst recommendation
+## Architecture options identified in the review
 
 Compare two future-state options before implementation:
 
