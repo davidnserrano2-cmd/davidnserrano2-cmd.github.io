@@ -1,14 +1,14 @@
 ---
 layout: home
 title: David N. Serrano | Systems Analysis Portfolio
-description: A CIS graduate's systems-analysis portfolio, beginning with an honors-thesis RFID access-control prototype and its responsible next steps.
+description: Systems analysis projects by David N. Serrano: an IT ticketing dashboard with n8n automation and an RFID access-control honors thesis.
 ---
 <section class="hero wrap">
   <div class="hero-copy">
     <p class="eyebrow"><span class="pulse"></span> CIS GRADUATE · SYSTEMS ANALYSIS · TECHNICAL IMPLEMENTATION</p>
     <h1>Computer Information Systems graduate focused on systems analysis.</h1>
     <p class="hero-lede">I designed and demonstrated a working RFID-and-keypad access-control prototype as my honors thesis. This portfolio shows how the thesis describes the hardware, Raspberry Pi application, event logging, and administrator dashboard, then compares that design with the supplied code and presents the project evidence and its documented next-stage direction.</p>
-    <div class="hero-actions"><a class="button button-primary" href="#case-study">View the RFID project <span>↘</span></a><a class="button button-secondary" href="#evidence">Review the project evidence</a></div>
+    <div class="hero-actions"><a class="button button-primary" href="#case-study">View the RFID project <span>↘</span></a><a class="button button-secondary" href="#it-ticketing">View IT ticketing <span>↘</span></a></div>
     <div class="hero-meta"><span><strong>Focus</strong> Computer systems analysis</span><span><strong>Background</strong> B.S. in CIS</span><span><strong>Project</strong> Honors thesis prototype</span></div>
   </div>
   <aside class="hero-note">
@@ -33,6 +33,23 @@ description: A CIS graduate's systems-analysis portfolio, beginning with an hono
     </div>
   </div>
 </section>
+
+<section id="it-ticketing" class="section section-tint">
+  <div class="wrap">
+    <div class="section-heading">
+      <div><p class="eyebrow">PROJECT / AUTOMATION + DATA</p><h2>Automated IT Ticketing &amp; Dashboard</h2></div>
+      <p class="section-intro">A local service-desk project connecting n8n forms and Gmail automation to PostgreSQL, with a read-only FastAPI dashboard for ticket visibility.</p>
+    </div>
+    <div class="finding-grid">
+      <article class="finding-card"><span class="card-index">01</span><h3>Automate the workflow</h3><p>Employee submissions, technician updates, notifications, and daily reports run through existing n8n workflows.</p></article>
+      <article class="finding-card"><span class="card-index">02</span><h3>Make tickets visible</h3><p>View KPIs and charts, search and filter tickets, and inspect details and existing audit history.</p></article>
+      <article class="finding-card"><span class="card-index">03</span><h3>Keep reads controlled</h3><p>A dedicated database reader account, parameterized queries, pagination, and 21 automated tests support the local MVP.</p></article>
+    </div>
+    <p class="diagram-caption">FastAPI · PostgreSQL 16 · n8n · Jinja2 · Bootstrap · Chart.js. Local portfolio MVP without visitor authentication; the dashboard does not change ticket records.</p>
+    <a class="button button-primary" href="https://github.com/davidnserrano2-cmd/IT-Ticketing-Dashboard">View source &amp; setup guide <span>↗</span></a>
+  </div>
+</section>
+
 <section id="case-study" class="section wrap">
   <div class="section-heading"><div><p class="eyebrow">01 / HONORS THESIS PROJECT</p><h2>RFID-Based Multi-Factor Access Control System</h2></div><p class="section-intro">Designed and demonstrated as an honors-thesis project, the prototype combines RFID and keypad input with Arduino hardware, a Raspberry Pi decision and logging layer, and an administrator dashboard. The thesis describes the target architecture; the supplied Pi folder contains several software alternatives, so this case study separates what I demonstrated from what the files show.</p></div>
   <div class="finding-grid">
