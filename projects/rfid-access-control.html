@@ -1,0 +1,69 @@
+---
+layout: home
+title: "RFID Access Control | David N. Serrano"
+description: "An honors-thesis RFID and keypad access-control prototype, with architecture, demonstrations, and implementation analysis."
+---
+<section class="wrap project-intro"><a class="back-link" href="{{ '/' | relative_url }}#projects">← All projects</a><p class="eyebrow">HONORS THESIS / AUGUST 2025–APRIL 2026</p><h1>RFID Access Control</h1><p>A demonstrated prototype connecting RFID and keypad input, Arduino hardware, a Raspberry Pi, event logging, and an administrator dashboard.</p><div class="project-jump-links"><a href="#live-demo">Watch demonstrations ↓</a><a href="#evidence">Explore documentation ↓</a></div></section>
+<section id="case-study" class="section wrap">
+  <div class="section-heading"><div><p class="eyebrow">01 / HONORS THESIS PROJECT</p><h2>RFID-Based Multi-Factor Access Control System</h2></div><p class="section-intro">Designed and demonstrated as an honors-thesis project, the prototype combines RFID and keypad input with Arduino hardware, a Raspberry Pi decision and logging layer, and an administrator dashboard. The thesis describes the target architecture; the supplied Pi folder contains several software alternatives, so this case study separates what I demonstrated from what the files show.</p></div>
+  <div class="finding-grid">
+    <article class="finding-card"><span class="card-index">01</span><h3>Design vs. implementation</h3><p>The thesis presents one system architecture; the Pi snapshot contains multiple alternatives that do not map cleanly to that single flow.</p><span class="card-tag">Traceability gap</span></article>
+    <article class="finding-card"><span class="card-index">02</span><h3>Split data ownership</h3><p>User records and event history are represented across JSON, SQLite, and a separate PostgreSQL design.</p><span class="card-tag">Data architecture</span></article>
+    <article class="finding-card"><span class="card-index">03</span><h3>Public-release risks</h3><p>Legacy variants include demo credentials and network paths without adequate protection; live logs and user files stay private.</p><span class="card-tag">Risk and privacy</span></article>
+  </div>
+  <div class="architecture-panel">
+    <div class="architecture-heading"><div><p class="eyebrow">CURRENT STATE · ALTERNATIVES</p><h3>Three ways the Pi code handles the device</h3></div><span class="diagram-label">Observed in supplied files</span></div>
+    <div class="architecture-flow">
+      <div class="flow-node flow-device"><span class="flow-icon">◉</span><strong>Reader + keypad</strong><small>Arduino interface</small></div>
+      <div class="flow-connector"><span>serial</span><b>→</b></div>
+      <div class="flow-options">
+        <div class="flow-option"><span class="option-number">A</span><div><strong>Desktop dashboard</strong><small>Direct serial · local JSON</small></div></div>
+        <div class="flow-option"><span class="option-number">B</span><div><strong>TCP server variants</strong><small>Direct serial · SQLite logs</small></div></div>
+        <div class="flow-option"><span class="option-number">C</span><div><strong>PostgreSQL logger</strong><small>Direct serial · PostgreSQL events</small></div></div>
+      </div>
+    </div>
+    <p class="diagram-caption">These are alternative code paths found in the folder, not a claim that all three ran together.</p>
+  </div>
+</section>
+<section class="section section-tint">
+    <div class="wrap thesis-summary">
+    <div class="section-heading"><div><p class="eyebrow">THESIS DESIGN / SYSTEM PREVIEW</p><h2>Hardware at the edge. Local control on the Pi.</h2></div><p class="section-intro">The thesis places the Arduino between reader/keypad inputs and the Pi backend. The Pi evaluates access, logs events, and supports an administrator dashboard; outcomes return to the Arduino for physical feedback.</p></div>
+    <a class="diagram-preview-link" href="{{ '/docs/THESIS_FOUNDATION.html#system-design' | relative_url }}" aria-label="Explore the complete thesis system architecture and technical diagrams">
+      <img class="thesis-diagram" src="{{ '/assets/system-architecture-preview.svg' | relative_url }}" alt="Simplified thesis architecture: RFID, keypad, and tamper inputs connect to an Arduino; Arduino and Raspberry Pi communicate bidirectionally; the Pi hosts the dashboard and returns outcomes for device feedback." />
+    </a>
+    <p class="diagram-caption">A thesis-based redraw that distinguishes the device feedback path from the dashboard monitoring path.</p>
+    <a class="button button-primary" href="{{ '/docs/THESIS_FOUNDATION.html#system-design' | relative_url }}">Explore System Architecture <span>↗</span></a>
+  </div>
+</section>
+<section id="live-demo" class="section wrap demo-section">
+  <div class="section-heading"><div><p class="eyebrow">THESIS PROTOTYPE · RECORDED DEMONSTRATIONS</p><h2>Dashboard activity and real device outcomes.</h2></div><p class="section-intro">The first clip shows the Windows dashboard connected to the Raspberry Pi. The second is a side-by-side hardware recording of successful and denied access attempts.</p></div>
+  <div class="demo-split" role="group" aria-label="Two recordings of the RFID access-control thesis prototype">
+    <div class="demo-pane"><div class="demo-pane-heading"><span>01</span><strong>ADMIN DASHBOARD</strong></div><div class="demo-video-frame" id="dashboard-video-frame"><video id="dashboard-demo-video" class="demo-video" controls playsinline preload="metadata" aria-label="Recording of the Raspberry Pi-connected access-control dashboard"><source src="{{ '/assets/admin-dashboard-demo.mp4' | relative_url }}" type="video/mp4">Your browser cannot play this MP4. <a href="{{ '/assets/admin-dashboard-demo.mp4' | relative_url }}">Download the dashboard demo</a>.</video></div><div class="demo-video-tools"><button class="demo-fullscreen-button" type="button" data-fullscreen-target="dashboard-video-frame" aria-controls="dashboard-video-frame">Full screen</button></div><p>Windows application showing the Pi connection, activity log, and access result.</p></div>
+    <div class="demo-pane"><div class="demo-pane-heading"><span>02</span><strong>PHYSICAL ACCESS OUTCOMES</strong></div><div class="demo-video-frame" id="hardware-video-frame"><video id="hardware-outcomes-video" class="demo-video" controls playsinline preload="metadata" aria-label="Side-by-side hardware demonstration of access granted and access denied"><source src="{{ '/assets/hardware-access-outcomes.mp4' | relative_url }}" type="video/mp4">Your browser cannot play this MP4. <a href="{{ '/assets/hardware-access-outcomes.mp4' | relative_url }}">Download the hardware demo</a>.</video></div><div class="demo-video-tools"><button class="demo-fullscreen-button" type="button" data-fullscreen-target="hardware-video-frame" aria-controls="hardware-video-frame">Full screen</button></div><p>Split-screen view of the RFID reader and keypad during granted and denied attempts.</p></div>
+  </div>
+  <p class="demo-safety"><span class="status-dot"></span>The dashboard hides the card identifier; the keypad masks PIN entry. These are thesis-demo recordings, not a production deployment.</p>
+</section>
+<section class="section section-tint">
+  <div class="wrap recommendation">
+    <div><p class="eyebrow">02 / NEXT-STAGE DESIGN</p><h2>Give each responsibility one clear home.</h2><p class="section-intro">The code review identifies two deployment patterns: a local-first application and a Pi service with a separate dashboard. The comparison centers on serial ownership, a single user and event data model, and documented failure behavior.</p><a class="text-link" href="{{ '/docs/CURRENT_STATE.html' | relative_url }}">Read the current-state assessment <span>→</span></a></div>
+    <div class="principle-list">
+      <div><span>01</span><p><strong>One device owner</strong><small>A single Pi-side component manages the serial connection.</small></p></div>
+      <div><span>02</span><p><strong>One source of truth</strong><small>A consolidated design uses one user and event data model.</small></p></div>
+      <div><span>03</span><p><strong>Safe demonstration</strong><small>Public demonstrations use synthetic records; private logs are excluded from the repository.</small></p></div>
+      <div><span>04</span><p><strong>Traceable implementation</strong><small>Requirements connect user needs to design decisions and acceptance criteria.</small></p></div>
+    </div>
+  </div>
+</section>
+<section id="evidence" class="section wrap">
+  <div class="section-heading"><div><p class="eyebrow">03 / PROJECT EVIDENCE</p><h2>Analysis you can review</h2></div><p class="section-intro">These portfolio artifacts are based on the thesis and supplied files. They document observed behavior, design distinctions, and requirements for a future implementation.</p></div>
+  <div class="evidence-grid">
+    <a class="evidence-card" href="{{ '/docs/CURRENT_STATE.html' | relative_url }}"><span class="evidence-type">ASSESSMENT</span><h3>Current-state map</h3><p>Application paths, data stores, serial ownership, and security findings.</p><span class="evidence-arrow">↗</span></a>
+    <a class="evidence-card" href="{{ '/docs/REQUIREMENTS.html' | relative_url }}"><span class="evidence-type">REQUIREMENTS</span><h3>Requirements analysis</h3><p>Prioritized functional and nonfunctional requirements with acceptance conditions.</p><span class="evidence-arrow">↗</span></a>
+    <a class="evidence-card" href="{{ '/docs/THESIS_FOUNDATION.html' | relative_url }}"><span class="evidence-type">PRIMARY PROJECT SOURCE</span><h3>Thesis foundation</h3><p>Thesis-backed architecture, demo workflow, data concepts, and evidence boundaries.</p><span class="evidence-arrow">↗</span></a>
+    <a class="evidence-card" href="{{ '/docs/FILE_INVENTORY.html' | relative_url }}"><span class="evidence-type">SOURCE REVIEW</span><h3>File inventory</h3><p>Reviewed roles of the supplied Pi files and how their software paths differ.</p><span class="evidence-arrow">↗</span></a>
+    <a class="evidence-card" href="{{ '/docs/NEXT_STAGE_ROADMAP.html' | relative_url }}"><span class="evidence-type">PRODUCT INVESTIGATION</span><h3>Next-stage roadmap</h3><p>A structured path from prototype evidence through requirements, architecture, and controlled testing.</p><span class="evidence-arrow">↗</span></a>
+    <a class="evidence-card" href="{{ '/docs/PUBLIC_RELEASE.html' | relative_url }}"><span class="evidence-type">RELEASE SCOPE</span><h3>Public repository scope</h3><p>Materials included in the case study and private source records kept out of the public package.</p><span class="evidence-arrow">↗</span></a>
+  </div>
+</section>
+
+<section class="wrap project-end"><a class="button button-secondary" href="{{ '/projects/it-ticketing.html' | relative_url }}">Next project: IT Ticketing →</a><a class="text-link" href="{{ '/' | relative_url }}#contact">Get in touch ↗</a></section>

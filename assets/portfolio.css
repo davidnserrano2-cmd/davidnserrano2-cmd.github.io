@@ -1,0 +1,60 @@
+
+/* About-first portfolio and shared project navigation. */
+html{scroll-padding-top:24px}
+.site-header{height:auto;min-height:78px;gap:20px;padding-block:16px}
+.site-header nav{gap:24px;flex-wrap:wrap}
+.site-header nav a:nth-child(2){display:inline}
+a:focus-visible,button:focus-visible{outline:3px solid #087e78;outline-offset:5px}
+.about-hero{display:grid;grid-template-columns:1.3fr .85fr;gap:70px;align-items:center;padding-block:76px 78px}
+.about-hero h1{font:500 clamp(48px,5.6vw,76px)/1.03 var(--serif);letter-spacing:-.045em;margin:0 0 25px}
+.about-hero h1 span{color:var(--teal)}
+.about-lede{font-size:21px;line-height:1.5;max-width:590px;margin:0 0 18px;color:var(--ink)}
+.about-intro{font-size:15px;color:var(--muted);line-height:1.85;max-width:600px;margin:0}
+.location-note{font-size:11px;color:var(--muted);line-height:1.8;margin-top:25px;max-width:580px}
+.about-now{background:white;border:1px solid var(--line);padding:32px;box-shadow:var(--shadow);border-top:3px solid var(--teal)}
+.about-now h2{font:500 27px/1.25 var(--serif);letter-spacing:-.02em;margin:0 0 25px}
+.about-now ul{list-style:none;padding:0;margin:0}
+.about-now li{display:flex;gap:18px;border-top:1px solid var(--line);padding:18px 0 0;margin-top:18px}
+.about-now li>span{color:var(--teal);font-size:10px;font-weight:800;margin-top:4px}
+.about-now strong{font-size:13px}.about-now li p{font-size:12px;line-height:1.75;margin:6px 0 0;color:var(--muted)}
+.about-landing .section{padding-block:74px}
+.project-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.project-link-card{display:flex;flex-direction:column;background:white;border:1px solid var(--line);text-decoration:none;overflow:hidden;border-radius:8px;transition:transform .18s,box-shadow .18s}
+.project-link-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.project-thumbnail{aspect-ratio:1.9;background:#eff3f5;border-bottom:1px solid var(--line);overflow:hidden}
+.project-thumbnail img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.project-thumbnail-diagram{padding:18px;background:#f7faf8}
+.project-thumbnail-diagram img{object-fit:contain;object-position:center}
+.project-card-copy{padding:27px;display:flex;flex-direction:column;flex:1}
+.project-card-copy .eyebrow{font-size:9px;margin-bottom:14px}
+.project-card-copy h3{font:500 27px/1.2 var(--serif);letter-spacing:-.02em;margin:0 0 14px;display:flex;justify-content:space-between;gap:12px}
+.project-card-copy h3 span{font-family:var(--sans);font-size:20px;color:var(--teal)}
+.project-card-copy>p:not(.eyebrow){color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 18px}
+.project-tech{font-size:10px;color:var(--muted);margin-top:auto;padding-top:6px}
+.project-cta{color:var(--teal);font-size:12px;font-weight:750;margin-top:18px}
+.work-layout{display:grid;grid-template-columns:.65fr 1.35fr;gap:70px}
+.role-summary{border-top:2px solid var(--teal);padding-top:22px}
+.role-summary h3{font:500 30px/1.2 var(--serif);margin:0 0 28px}
+.role-summary dt{font-size:12px;font-weight:700}.role-summary dd{margin:4px 0 21px;font-size:11px;color:var(--muted)}
+.recognition{font-size:11px;color:var(--teal);border-top:1px solid var(--line);padding-top:17px}
+.responsibilities article{display:flex;gap:22px;padding:0 0 24px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.responsibilities article>span{font-size:10px;color:var(--teal);font-weight:800;margin-top:5px}
+.responsibilities h3{font-size:16px;margin:0 0 9px;font-weight:650}.responsibilities article p{font-size:13px;color:var(--muted);line-height:1.85;margin:0}
+.people-note{font-size:12px;color:var(--muted);line-height:1.85}
+.education-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.education-card{padding:28px;background:white;border:1px solid var(--line)}
+.education-card h3{font:500 25px/1.25 var(--serif);margin:0 0 14px}
+.education-card p:not(.eyebrow){font-size:12px;line-height:1.85;color:var(--muted);margin:0}
+.capability-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:35px;padding-bottom:25px;border-bottom:1px solid #ccd9d1}
+.capability-grid h3{font-size:13px;margin:0 0 10px}.capability-grid p{font-size:12px;line-height:1.9;color:var(--muted);margin:0}
+.beyond-projects{max-width:850px;margin-top:25px}.beyond-projects h3{font:500 24px var(--serif);margin:0 0 10px}.beyond-projects p{font-size:13px;line-height:1.85;color:var(--muted);margin:0}
+.project-intro{padding-block:55px 50px}.project-intro .eyebrow{margin-top:32px}
+.project-intro h1{font:500 clamp(38px,5vw,62px)/1.1 var(--serif);letter-spacing:-.035em;margin:0 0 22px}
+.project-intro>p:not(.eyebrow){font-size:17px;line-height:1.8;max-width:760px;color:var(--muted)}
+.project-intro .button{margin-top:12px}
+.project-jump-links{display:flex;gap:24px;flex-wrap:wrap;font-size:12px;color:var(--teal);font-weight:700;margin-top:25px}
+.project-limit{font-size:12px;line-height:1.8;color:var(--muted);max-width:850px;margin-top:24px}
+.project-end{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-block:0 70px}
+@media(max-width:900px){.about-hero{grid-template-columns:1fr;gap:35px}.about-now{max-width:650px}.work-layout{gap:35px;grid-template-columns:.8fr 1.2fr}.site-header nav{gap:16px}}
+@media(max-width:600px){.site-header{flex-wrap:wrap;gap:12px;padding:15px 17px}.site-header nav{width:100%;padding:0;gap:18px;font-size:11px}.about-hero{padding-block:45px}.about-hero h1{font-size:52px}.about-lede{font-size:19px}.about-now{padding:24px}.hero-actions{flex-wrap:wrap}.about-landing .section{padding-block:52px}.project-links,.education-pair,.work-layout,.capability-grid{grid-template-columns:minmax(0,1fr)}.project-card-copy{padding:23px}.project-card-copy h3{font-size:25px}.capability-grid{gap:20px}.work-layout{gap:28px}.role-summary h3 br{display:none}.role-summary dl{margin-bottom:0}.project-intro{padding-block:32px}.project-end{padding-bottom:45px}.section-intro{font-size:13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-link-card{transition:none}.project-link-card:hover{transform:none}}

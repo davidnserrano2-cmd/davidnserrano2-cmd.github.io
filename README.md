@@ -1,29 +1,36 @@
-# David N. Serrano | Systems Analysis Portfolio
+# David N. Serrano — Portfolio
 
-This portfolio presents my honors-thesis RFID access-control prototype and a systems analysis of its design, code paths, data stores, and recorded demonstration. The thesis describes an Arduino Nano 33 IoT and Raspberry Pi Zero 2 W architecture with RFID and keypad verification, serial communication, SQLite event logging, and a Tkinter administration dashboard.
+An about-first portfolio presenting my background, current IT responsibilities,
+and two featured projects.
 
-## Project status
+- **[About me](https://davidnserrano2-cmd.github.io/)** — IT support, documentation,
+  education, practical skills, and contact information.
+- **[IT Ticketing & Dashboard](https://davidnserrano2-cmd.github.io/projects/it-ticketing.html)** —
+  n8n automation, PostgreSQL, and a read-only FastAPI dashboard.
+- **[RFID Access Control](https://davidnserrano2-cmd.github.io/projects/rfid-access-control.html)** —
+  an honors-thesis prototype with demonstrations and systems analysis.
 
-- **Completed:** academic prototype, live thesis demonstration, and thesis documentation.
-- **Portfolio evidence:** recorded dashboard and hardware demonstrations, thesis-based architecture diagrams, source-file inventory, current-state assessment, and requirements analysis.
-- **Project boundary:** academic demonstration. This portfolio does not claim production security, commercial validation, or a deployed product.
-- **Long-term direction:** investigate the user, security, privacy, safety, operational, and support requirements for a future access-control product.
+## Site structure
 
-## Project documents
+GitHub Pages renders the HTML pages through Jekyll. Shared layouts are in
+`_layouts/`; styling is in `assets/site.css` and `assets/portfolio.css`.
+Project pages live in `projects/`. The RFID analysis documents remain in `docs/`.
 
-- [Thesis foundation and system walkthrough](docs/THESIS_FOUNDATION.md)
+The IT dashboard's application source is in its
+[separate repository](https://github.com/davidnserrano2-cmd/IT-Ticketing-Dashboard).
+It is a local MVP without visitor authentication; this portfolio hosts its
+description and approved screenshots, not the running FastAPI application.
+
+## RFID documents
+
+- [Thesis foundation](docs/THESIS_FOUNDATION.md)
 - [Current-state assessment](docs/CURRENT_STATE.md)
-- [Source file inventory](docs/FILE_INVENTORY.md)
-- [Requirements analysis](docs/REQUIREMENTS.md)
+- [File inventory](docs/FILE_INVENTORY.md)
+- [Requirements](docs/REQUIREMENTS.md)
 - [Next-stage roadmap](docs/NEXT_STAGE_ROADMAP.md)
-- [Public repository scope](docs/PUBLIC_RELEASE.md)
+- [Public release scope](docs/PUBLIC_RELEASE.md)
 
-The [portfolio landing page](index.html) summarizes the case study and links to its evidence.
-
-## Public package contents
-
-The public package includes two prototype recordings: the Raspberry Pi-connected dashboard and the physical granted/denied outcomes. It excludes the thesis PDF, source-code variants, user registry, card identifiers, credential values, and database files. The architecture graphic is a clean redraw based on the thesis. The recordings document the academic demo; they do not establish production readiness.
-
-## Evidence boundary
-
-The thesis reports successful demonstration tests; those are project-reported results, not independent production or security assessments. The supplied Python files are alternative implementations, not one integrated runtime. The product direction is future work, not an existing deployment.
+The RFID recordings document an academic demonstration. Alternative source-code
+paths and future plans are distinguished from the demonstrated prototype.
+Credentials, private registries, identifiers, database files, and the thesis PDF
+are excluded from this public repository.
